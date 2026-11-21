@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "atlas-cloud-saas",
+    "description": "Entirely fictional Atlas SaaS infrastructure authored for CloudAtlas portfolio exploration.",
+    "graph_view": "EKS"
+  },
+  "edges": [
+    {
+      "id": "synthetic-edge:eks:001",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "relation": "USES_CLUSTER_ROLE",
+      "evidence_source": "SyntheticEKS:DescribeCluster",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Cluster.roleArn reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:002",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "relation": "HAS_MANAGED_NODE_GROUP",
+      "evidence_source": "SyntheticEKS:ListNodegroups+DescribeNodegroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:003",
+      "source": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "relation": "USES_NODE_ROLE",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Nodegroup.nodeRole reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:004",
+      "source": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1a-01",
+      "relation": "CONTAINS_WORKER_INSTANCE",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:005",
+      "source": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1a-02",
+      "relation": "CONTAINS_WORKER_INSTANCE",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:006",
+      "source": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1b-01",
+      "relation": "CONTAINS_WORKER_INSTANCE",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:007",
+      "source": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1b-02",
+      "relation": "CONTAINS_WORKER_INSTANCE",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:008",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/customer",
+      "relation": "CONTAINS_NAMESPACE",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:009",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/platform",
+      "relation": "CONTAINS_NAMESPACE",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:010",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/notifications",
+      "relation": "CONTAINS_NAMESPACE",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:011",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/batch",
+      "relation": "CONTAINS_NAMESPACE",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:012",
+      "source": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/customer",
+      "target": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/customer/deployment/web-frontend",
+      "relation": "OWNS_DEPLOYMENT",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:013",
+      "source": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/customer/deployment/web-frontend",
+      "target": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/web-frontend-7d5f7c8b9f",
+      "relation": "OWNS_REPLICASET",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:014",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/web-frontend-7d5f7c8b9f",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-6f9d4",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:015",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-6f9d4",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-21.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-11-21.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:016",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/web-frontend-7d5f7c8b9f",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-8b7c2",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:017",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-8b7c2",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-21.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-21-21.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:018",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/web-frontend",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-6f9d4",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:019",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/web-frontend",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-8b7c2",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:020",
+      "source": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/customer",
+      "target": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/customer/deployment/public-api",
+      "relation": "OWNS_DEPLOYMENT",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:021",
+      "source": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/customer/deployment/public-api",
+      "target": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/public-api-59c7d9f6d7",
+      "relation": "OWNS_REPLICASET",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:022",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/public-api-59c7d9f6d7",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-4m2pk",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:023",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-4m2pk",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-22.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-11-22.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:024",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/public-api-59c7d9f6d7",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-7q9fd",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:025",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-7q9fd",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-21.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-21-21.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:026",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/public-api-59c7d9f6d7",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-9cw4h",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:027",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-9cw4h",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-22.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-21-22.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:028",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/public-api",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-4m2pk",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:029",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/public-api",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-7q9fd",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:030",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/public-api",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-9cw4h",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:031",
+      "source": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/notifications",
+      "target": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/notifications/deployment/notification-dispatcher",
+      "relation": "OWNS_DEPLOYMENT",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:032",
+      "source": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/notifications/deployment/notification-dispatcher",
+      "target": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/notifications/replicaset/notification-dispatcher-6b8f5d6c8b",
+      "relation": "OWNS_REPLICASET",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:033",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/notifications/replicaset/notification-dispatcher-6b8f5d6c8b",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-2p6wr",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:034",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-2p6wr",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-21.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-11-21.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:035",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/notifications/replicaset/notification-dispatcher-6b8f5d6c8b",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-5bx8m",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:036",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-5bx8m",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-22.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "ip-10-42-21-22.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:037",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/notifications/service/notification-dispatcher",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-2p6wr",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:038",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/notifications/service/notification-dispatcher",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-5bx8m",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:039",
+      "source": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/batch",
+      "target": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/batch/deployment/order-batch-worker",
+      "relation": "OWNS_DEPLOYMENT",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:040",
+      "source": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/batch/deployment/order-batch-worker",
+      "target": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/batch/replicaset/order-batch-worker-6f67b78f7c",
+      "relation": "OWNS_REPLICASET",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:041",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/batch/replicaset/order-batch-worker-6f67b78f7c",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-4qf5n",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:042",
+      "source": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/batch/replicaset/order-batch-worker-6f67b78f7c",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-9lp2d",
+      "relation": "OWNS_POD",
+      "evidence_source": "SyntheticKubernetesApi:PodOwnerReference",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:043",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/batch/service/order-batch-worker",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-4qf5n",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:044",
+      "source": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/batch/service/order-batch-worker",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-9lp2d",
+      "relation": "HAS_ENDPOINT_POD",
+      "evidence_source": "SyntheticKubernetesApi:EndpointSliceEndpoints",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "endpoint_state": "ready",
+        "selector_match": true
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:045",
+      "source": "aws:demo:us-east-1:kubernetes.ingress:atlas-prod-eks/customer/ingress/customer-web",
+      "target": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/web-frontend",
+      "relation": "ROUTES_TO_SERVICE",
+      "evidence_source": "SyntheticKubernetesApi:IngressRules+ServiceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:046",
+      "source": "aws:demo:us-east-1:kubernetes.ingress:atlas-prod-eks/customer/ingress/public-api",
+      "target": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/public-api",
+      "relation": "ROUTES_TO_SERVICE",
+      "evidence_source": "SyntheticKubernetesApi:IngressRules+ServiceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:047",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:containers.fargate_profile:atlas-prod-batch-fargate",
+      "relation": "HAS_FARGATE_PROFILE",
+      "evidence_source": "SyntheticEKS:ListFargateProfiles+DescribeFargateProfile",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:048",
+      "source": "aws:demo:us-east-1:containers.fargate_profile:atlas-prod-batch-fargate",
+      "target": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/batch",
+      "relation": "SELECTS_NAMESPACE",
+      "evidence_source": "SyntheticEKS:DescribeFargateProfile+SyntheticKubernetesApi:NamespaceList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "selector": {
+          "namespace": "batch",
+          "labels": {
+            "workload": "async"
+          }
+        }
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:049",
+      "source": "aws:demo:us-east-1:containers.fargate_profile:atlas-prod-batch-fargate",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-4qf5n",
+      "relation": "MATCHES_POD_SELECTOR",
+      "evidence_source": "SyntheticEKS:DescribeFargateProfile+SyntheticKubernetesApi:PodList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "selector_match": {
+          "namespace": "batch",
+          "labels": {
+            "workload": "async"
+          }
+        }
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:050",
+      "source": "aws:demo:us-east-1:containers.fargate_profile:atlas-prod-batch-fargate",
+      "target": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-9lp2d",
+      "relation": "MATCHES_POD_SELECTOR",
+      "evidence_source": "SyntheticEKS:DescribeFargateProfile+SyntheticKubernetesApi:PodList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "selector_match": {
+          "namespace": "batch",
+          "labels": {
+            "workload": "async"
+          }
+        }
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:051",
+      "source": "aws:demo:us-east-1:containers.pod_identity_association:atlas-prod-eks/customer/api-workload",
+      "target": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "relation": "ASSOCIATED_WITH_CLUSTER",
+      "evidence_source": "SyntheticEKS:DescribePodIdentityAssociation",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:052",
+      "source": "aws:demo:us-east-1:containers.pod_identity_association:atlas-prod-eks/customer/api-workload",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "relation": "ASSOCIATES_IAM_ROLE",
+      "evidence_source": "SyntheticEKS:DescribePodIdentityAssociation",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Pod Identity association.roleArn reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:053",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-21.ec2.internal",
+      "relation": "CONTAINS_NODE",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:054",
+      "source": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-21.ec2.internal",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1a-01",
+      "relation": "RUNS_ON_INSTANCE",
+      "evidence_source": "SyntheticKubernetesApi:NodeProviderID+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "provider_id": "aws:///us-east-1a/i-demo-eks-worker-1a-01"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:055",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-22.ec2.internal",
+      "relation": "CONTAINS_NODE",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:056",
+      "source": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-22.ec2.internal",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1a-02",
+      "relation": "RUNS_ON_INSTANCE",
+      "evidence_source": "SyntheticKubernetesApi:NodeProviderID+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "provider_id": "aws:///us-east-1a/i-demo-eks-worker-1a-02"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:057",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-21.ec2.internal",
+      "relation": "CONTAINS_NODE",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:058",
+      "source": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-21.ec2.internal",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1b-01",
+      "relation": "RUNS_ON_INSTANCE",
+      "evidence_source": "SyntheticKubernetesApi:NodeProviderID+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "provider_id": "aws:///us-east-1b/i-demo-eks-worker-1b-01"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:059",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-22.ec2.internal",
+      "relation": "CONTAINS_NODE",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:060",
+      "source": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-22.ec2.internal",
+      "target": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1b-02",
+      "relation": "RUNS_ON_INSTANCE",
+      "evidence_source": "SyntheticKubernetesApi:NodeProviderID+SyntheticEC2:DescribeInstances",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "provider_id": "aws:///us-east-1b/i-demo-eks-worker-1b-02"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:061",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/fargate-ip-10-42-31-45.ec2.internal",
+      "relation": "CONTAINS_NODE",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:062",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-4qf5n",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/fargate-ip-10-42-31-45.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName+SyntheticEKS:DescribeFargateProfile",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "fargate-ip-10-42-31-45.ec2.internal"
+      }
+    },
+    {
+      "id": "synthetic-edge:eks:063",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/fargate-ip-10-42-32-46.ec2.internal",
+      "relation": "CONTAINS_NODE",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:eks:064",
+      "source": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-9lp2d",
+      "target": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/fargate-ip-10-42-32-46.ec2.internal",
+      "relation": "SCHEDULED_ON_NODE",
+      "evidence_source": "SyntheticKubernetesApi:PodSpecNodeName+SyntheticEKS:DescribeFargateProfile",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "node_name": "fargate-ip-10-42-32-46.ec2.internal"
+      }
+    }
+  ]
+}

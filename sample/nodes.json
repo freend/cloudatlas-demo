@@ -1,0 +1,2089 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "production-scale-saas-services",
+    "description": "Fictional SaaS service paths authored for CloudAtlas demonstration."
+  },
+  "nodes": [
+    {
+      "id": "aws:demo:global:dns.hosted_zone:demo-zone-public-zone",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.hosted_zone",
+      "native_type": "AWS::Route53::HostedZone",
+      "native_id": "demo-zone-public-zone",
+      "name": "example.com.",
+      "evidence_source": "SyntheticSample:zone-public-zone",
+      "properties": {
+        "Id": "ZDEMOEXAMPLE",
+        "Name": "example.com.",
+        "Config": {
+          "PrivateZone": false
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.hosted_zone:demo-zone-private-zone",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.hosted_zone",
+      "native_type": "AWS::Route53::HostedZone",
+      "native_id": "demo-zone-private-zone",
+      "name": "internal.example.com.",
+      "evidence_source": "SyntheticSample:zone-private-zone",
+      "properties": {
+        "Id": "ZDEMOINTERNAL",
+        "Name": "internal.example.com.",
+        "Config": {
+          "PrivateZone": true
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.application_load_balancer:demo-public-edge-alb",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.application_load_balancer",
+      "native_type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "native_id": "demo-public-edge-alb",
+      "name": "Public Edge ALB",
+      "evidence_source": "SyntheticSample:public-edge-alb",
+      "properties": {
+        "LoadBalancerName": "Public Edge ALB",
+        "DNSName": "edge-01.elb.us-east-1.example.invalid.",
+        "CanonicalHostedZoneId": "ZDEMOALB001",
+        "Scheme": "internet-facing",
+        "Type": "application",
+        "State": {
+          "Code": "active"
+        },
+        "AvailabilityZones": [
+          {
+            "ZoneName": "us-east-1a"
+          },
+          {
+            "ZoneName": "us-east-1b"
+          },
+          {
+            "ZoneName": "us-east-1c"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.application_load_balancer:demo-admin-alb",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.application_load_balancer",
+      "native_type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "native_id": "demo-admin-alb",
+      "name": "Admin ALB",
+      "evidence_source": "SyntheticSample:admin-alb",
+      "properties": {
+        "LoadBalancerName": "Admin ALB",
+        "DNSName": "admin-01.elb.us-east-1.example.invalid.",
+        "CanonicalHostedZoneId": "ZDEMOALB002",
+        "Scheme": "internet-facing",
+        "Type": "application",
+        "State": {
+          "Code": "active"
+        },
+        "AvailabilityZones": [
+          {
+            "ZoneName": "us-east-1a"
+          },
+          {
+            "ZoneName": "us-east-1b"
+          },
+          {
+            "ZoneName": "us-east-1c"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.application_load_balancer:demo-operations-alb",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.application_load_balancer",
+      "native_type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "native_id": "demo-operations-alb",
+      "name": "Internal Operations ALB",
+      "evidence_source": "SyntheticSample:operations-alb",
+      "properties": {
+        "LoadBalancerName": "Internal Operations ALB",
+        "DNSName": "operations-01.elb.us-east-1.example.invalid.",
+        "CanonicalHostedZoneId": "ZDEMOALB003",
+        "Scheme": "internal",
+        "Type": "application",
+        "State": {
+          "Code": "active"
+        },
+        "AvailabilityZones": [
+          {
+            "ZoneName": "us-east-1a"
+          },
+          {
+            "ZoneName": "us-east-1b"
+          },
+          {
+            "ZoneName": "us-east-1c"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-www-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-www-record",
+      "name": "www.example.com.",
+      "evidence_source": "SyntheticSample:www-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "www.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "edge-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB001",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-api-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-api-record",
+      "name": "api.example.com.",
+      "evidence_source": "SyntheticSample:api-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "api.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "edge-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB001",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-auth-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-auth-record",
+      "name": "auth.example.com.",
+      "evidence_source": "SyntheticSample:auth-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "auth.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "edge-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB001",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-orders-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-orders-record",
+      "name": "orders.example.com.",
+      "evidence_source": "SyntheticSample:orders-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "orders.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "edge-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB001",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-payments-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-payments-record",
+      "name": "payments.example.com.",
+      "evidence_source": "SyntheticSample:payments-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "payments.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "edge-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB001",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-admin-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-admin-record",
+      "name": "admin.example.com.",
+      "evidence_source": "SyntheticSample:admin-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "admin.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "admin-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB002",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-support-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-support-record",
+      "name": "support.example.com.",
+      "evidence_source": "SyntheticSample:support-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "support.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "admin-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB002",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:dns.record:demo-operations-record",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "demo-operations-record",
+      "name": "ops.internal.example.com.",
+      "evidence_source": "SyntheticSample:operations-record",
+      "properties": {
+        "hosted_zone_id": "ZDEMOINTERNAL",
+        "record": {
+          "Name": "ops.internal.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "operations-01.elb.us-east-1.example.invalid.",
+            "HostedZoneId": "ZDEMOALB003",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-web-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-web-target-group",
+      "name": "Web Target Group",
+      "evidence_source": "SyntheticSample:web-target-group",
+      "properties": {
+        "TargetGroupName": "web-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-api-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-api-target-group",
+      "name": "Public API Target Group",
+      "evidence_source": "SyntheticSample:api-target-group",
+      "properties": {
+        "TargetGroupName": "api-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-auth-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-auth-target-group",
+      "name": "Authentication Target Group",
+      "evidence_source": "SyntheticSample:auth-target-group",
+      "properties": {
+        "TargetGroupName": "auth-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-orders-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-orders-target-group",
+      "name": "Orders Target Group",
+      "evidence_source": "SyntheticSample:orders-target-group",
+      "properties": {
+        "TargetGroupName": "orders-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-payments-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-payments-target-group",
+      "name": "Payments Target Group",
+      "evidence_source": "SyntheticSample:payments-target-group",
+      "properties": {
+        "TargetGroupName": "payments-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-admin-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-admin-target-group",
+      "name": "Admin Console Target Group",
+      "evidence_source": "SyntheticSample:admin-target-group",
+      "properties": {
+        "TargetGroupName": "admin-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-support-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-support-target-group",
+      "name": "Customer Support Target Group",
+      "evidence_source": "SyntheticSample:support-target-group",
+      "properties": {
+        "TargetGroupName": "support-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:demo-operations-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "demo-operations-target-group",
+      "name": "Operations Target Group",
+      "evidence_source": "SyntheticSample:operations-target-group",
+      "properties": {
+        "TargetGroupName": "operations-tg-demo",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener:demo-public-edge-alb-https-listener",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener",
+      "native_type": "AWS::ElasticLoadBalancingV2::Listener",
+      "native_id": "demo-public-edge-alb-https-listener",
+      "name": "Public Edge ALB HTTPS Listener",
+      "evidence_source": "SyntheticSample:public-edge-alb-https-listener",
+      "properties": {
+        "Protocol": "HTTPS",
+        "Port": 443,
+        "LoadBalancerId": "aws:demo:us-east-1:load_balancing.application_load_balancer:demo-public-edge-alb"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener:demo-admin-alb-https-listener",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener",
+      "native_type": "AWS::ElasticLoadBalancingV2::Listener",
+      "native_id": "demo-admin-alb-https-listener",
+      "name": "Admin ALB HTTPS Listener",
+      "evidence_source": "SyntheticSample:admin-alb-https-listener",
+      "properties": {
+        "Protocol": "HTTPS",
+        "Port": 443,
+        "LoadBalancerId": "aws:demo:us-east-1:load_balancing.application_load_balancer:demo-admin-alb"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener:demo-operations-alb-https-listener",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener",
+      "native_type": "AWS::ElasticLoadBalancingV2::Listener",
+      "native_id": "demo-operations-alb-https-listener",
+      "name": "Internal Operations ALB HTTPS Listener",
+      "evidence_source": "SyntheticSample:operations-alb-https-listener",
+      "properties": {
+        "Protocol": "HTTPS",
+        "Port": 443,
+        "LoadBalancerId": "aws:demo:us-east-1:load_balancing.application_load_balancer:demo-operations-alb"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-web-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-web-host-rule",
+      "name": "www.example.com host rule",
+      "evidence_source": "SyntheticSample:web-host-rule",
+      "properties": {
+        "Priority": "1",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "www.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-web-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-api-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-api-host-rule",
+      "name": "api.example.com host rule",
+      "evidence_source": "SyntheticSample:api-host-rule",
+      "properties": {
+        "Priority": "2",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "api.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-api-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-auth-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-auth-host-rule",
+      "name": "auth.example.com host rule",
+      "evidence_source": "SyntheticSample:auth-host-rule",
+      "properties": {
+        "Priority": "3",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "auth.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-auth-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-orders-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-orders-host-rule",
+      "name": "orders.example.com host rule",
+      "evidence_source": "SyntheticSample:orders-host-rule",
+      "properties": {
+        "Priority": "4",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "orders.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-orders-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-payments-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-payments-host-rule",
+      "name": "payments.example.com host rule",
+      "evidence_source": "SyntheticSample:payments-host-rule",
+      "properties": {
+        "Priority": "5",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "payments.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-payments-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-admin-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-admin-host-rule",
+      "name": "admin.example.com host rule",
+      "evidence_source": "SyntheticSample:admin-host-rule",
+      "properties": {
+        "Priority": "6",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "admin.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-admin-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-support-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-support-host-rule",
+      "name": "support.example.com host rule",
+      "evidence_source": "SyntheticSample:support-host-rule",
+      "properties": {
+        "Priority": "7",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "support.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-support-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-operations-host-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-operations-host-rule",
+      "name": "ops.internal.example.com host rule",
+      "evidence_source": "SyntheticSample:operations-host-rule",
+      "properties": {
+        "Priority": "8",
+        "IsDefault": false,
+        "Conditions": [
+          {
+            "Field": "host-header",
+            "Values": [
+              "ops.internal.example.com"
+            ]
+          }
+        ],
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "aws:demo:us-east-1:load_balancing.target_group:demo-operations-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-public-edge-alb-default-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-public-edge-alb-default-rule",
+      "name": "Public Edge ALB default rule",
+      "evidence_source": "SyntheticSample:public-edge-alb-default-rule",
+      "properties": {
+        "Priority": "default",
+        "IsDefault": true,
+        "Actions": [
+          {
+            "Type": "fixed-response",
+            "FixedResponseConfig": {
+              "StatusCode": "404",
+              "ContentType": "text/plain"
+            }
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-admin-alb-default-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-admin-alb-default-rule",
+      "name": "Admin ALB default rule",
+      "evidence_source": "SyntheticSample:admin-alb-default-rule",
+      "properties": {
+        "Priority": "default",
+        "IsDefault": true,
+        "Actions": [
+          {
+            "Type": "fixed-response",
+            "FixedResponseConfig": {
+              "StatusCode": "404",
+              "ContentType": "text/plain"
+            }
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:demo-operations-alb-default-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "demo-operations-alb-default-rule",
+      "name": "Internal Operations ALB default rule",
+      "evidence_source": "SyntheticSample:operations-alb-default-rule",
+      "properties": {
+        "Priority": "default",
+        "IsDefault": true,
+        "Actions": [
+          {
+            "Type": "fixed-response",
+            "FixedResponseConfig": {
+              "StatusCode": "404",
+              "ContentType": "text/plain"
+            }
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-web-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-web-instance-01",
+      "name": "Web EC2 · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:web-instance-01",
+      "properties": {
+        "instance_id": "i-demo-web-a-01",
+        "InstanceId": "i-demo-web-a-01",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "web-us-east-1a-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Web"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.10",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-web-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-web-target-01",
+      "name": "Web target · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:web-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-web-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-web-a-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-web-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-web-instance-02",
+      "name": "Web EC2 · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:web-instance-02",
+      "properties": {
+        "instance_id": "i-demo-web-b-02",
+        "InstanceId": "i-demo-web-b-02",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "web-us-east-1b-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Web"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.10",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-web-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-web-target-02",
+      "name": "Web target · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:web-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-web-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-web-b-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-web-instance-03",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-web-instance-03",
+      "name": "Web EC2 · us-east-1c · 03",
+      "evidence_source": "SyntheticSample:web-instance-03",
+      "properties": {
+        "instance_id": "i-demo-web-c-03",
+        "InstanceId": "i-demo-web-c-03",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1c",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "web-us-east-1c-03"
+          },
+          {
+            "Key": "Service",
+            "Value": "Web"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.3.10",
+        "SubnetId": "subnet-demo-private-1c"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-web-target-03",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-web-target-03",
+      "name": "Web target · us-east-1c · 03",
+      "evidence_source": "SyntheticSample:web-target-03",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-web-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-web-c-03",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-web-instance-04",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-web-instance-04",
+      "name": "Web EC2 · us-east-1a · 04",
+      "evidence_source": "SyntheticSample:web-instance-04",
+      "properties": {
+        "instance_id": "i-demo-web-a-04",
+        "InstanceId": "i-demo-web-a-04",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "web-us-east-1a-04"
+          },
+          {
+            "Key": "Service",
+            "Value": "Web"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.11",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-web-target-04",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-web-target-04",
+      "name": "Web target · us-east-1a · 04",
+      "evidence_source": "SyntheticSample:web-target-04",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-web-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-web-a-04",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-api-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-api-instance-01",
+      "name": "Public API EC2 · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:api-instance-01",
+      "properties": {
+        "instance_id": "i-demo-api-a-01",
+        "InstanceId": "i-demo-api-a-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "api-us-east-1a-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Public API"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.12",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-api-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-api-target-01",
+      "name": "Public API target · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:api-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-api-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-api-a-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-api-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-api-instance-02",
+      "name": "Public API EC2 · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:api-instance-02",
+      "properties": {
+        "instance_id": "i-demo-api-b-02",
+        "InstanceId": "i-demo-api-b-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "api-us-east-1b-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Public API"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.11",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-api-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-api-target-02",
+      "name": "Public API target · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:api-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-api-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-api-b-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-api-instance-03",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-api-instance-03",
+      "name": "Public API EC2 · us-east-1c · 03",
+      "evidence_source": "SyntheticSample:api-instance-03",
+      "properties": {
+        "instance_id": "i-demo-api-c-03",
+        "InstanceId": "i-demo-api-c-03",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1c",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "api-us-east-1c-03"
+          },
+          {
+            "Key": "Service",
+            "Value": "Public API"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.3.11",
+        "SubnetId": "subnet-demo-private-1c"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-api-target-03",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-api-target-03",
+      "name": "Public API target · us-east-1c · 03",
+      "evidence_source": "SyntheticSample:api-target-03",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-api-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-api-c-03",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-api-instance-04",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-api-instance-04",
+      "name": "Public API EC2 · us-east-1a · 04",
+      "evidence_source": "SyntheticSample:api-instance-04",
+      "properties": {
+        "instance_id": "i-demo-api-a-04",
+        "InstanceId": "i-demo-api-a-04",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "api-us-east-1a-04"
+          },
+          {
+            "Key": "Service",
+            "Value": "Public API"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.13",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-api-target-04",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-api-target-04",
+      "name": "Public API target · us-east-1a · 04",
+      "evidence_source": "SyntheticSample:api-target-04",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-api-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-api-a-04",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-auth-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-auth-instance-01",
+      "name": "Authentication EC2 · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:auth-instance-01",
+      "properties": {
+        "instance_id": "i-demo-auth-a-01",
+        "InstanceId": "i-demo-auth-a-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "auth-us-east-1a-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Authentication"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.14",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-auth-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-auth-target-01",
+      "name": "Authentication target · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:auth-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-auth-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-auth-a-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-auth-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-auth-instance-02",
+      "name": "Authentication EC2 · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:auth-instance-02",
+      "properties": {
+        "instance_id": "i-demo-auth-b-02",
+        "InstanceId": "i-demo-auth-b-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "auth-us-east-1b-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Authentication"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.12",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-auth-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-auth-target-02",
+      "name": "Authentication target · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:auth-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-auth-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-auth-b-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-orders-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-orders-instance-01",
+      "name": "Orders EC2 · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:orders-instance-01",
+      "properties": {
+        "instance_id": "i-demo-orders-a-01",
+        "InstanceId": "i-demo-orders-a-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "orders-us-east-1a-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Orders"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.15",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-orders-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-orders-target-01",
+      "name": "Orders target · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:orders-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-orders-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-orders-a-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-orders-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-orders-instance-02",
+      "name": "Orders EC2 · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:orders-instance-02",
+      "properties": {
+        "instance_id": "i-demo-orders-b-02",
+        "InstanceId": "i-demo-orders-b-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "orders-us-east-1b-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Orders"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.13",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-orders-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-orders-target-02",
+      "name": "Orders target · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:orders-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-orders-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-orders-b-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-orders-instance-03",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-orders-instance-03",
+      "name": "Orders EC2 · us-east-1c · 03",
+      "evidence_source": "SyntheticSample:orders-instance-03",
+      "properties": {
+        "instance_id": "i-demo-orders-c-03",
+        "InstanceId": "i-demo-orders-c-03",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1c",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "orders-us-east-1c-03"
+          },
+          {
+            "Key": "Service",
+            "Value": "Orders"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.3.12",
+        "SubnetId": "subnet-demo-private-1c"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-orders-target-03",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-orders-target-03",
+      "name": "Orders target · us-east-1c · 03",
+      "evidence_source": "SyntheticSample:orders-target-03",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-orders-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-orders-c-03",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-orders-instance-04",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-orders-instance-04",
+      "name": "Orders EC2 · us-east-1a · 04",
+      "evidence_source": "SyntheticSample:orders-instance-04",
+      "properties": {
+        "instance_id": "i-demo-orders-a-04",
+        "InstanceId": "i-demo-orders-a-04",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "orders-us-east-1a-04"
+          },
+          {
+            "Key": "Service",
+            "Value": "Orders"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.16",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-orders-target-04",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-orders-target-04",
+      "name": "Orders target · us-east-1a · 04",
+      "evidence_source": "SyntheticSample:orders-target-04",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-orders-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-orders-a-04",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-payments-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-payments-instance-01",
+      "name": "Payments EC2 · us-east-1b · 01",
+      "evidence_source": "SyntheticSample:payments-instance-01",
+      "properties": {
+        "instance_id": "i-demo-payments-b-01",
+        "InstanceId": "i-demo-payments-b-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "payments-us-east-1b-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Payments"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.14",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-payments-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-payments-target-01",
+      "name": "Payments target · us-east-1b · 01",
+      "evidence_source": "SyntheticSample:payments-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-payments-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-payments-b-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-payments-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-payments-instance-02",
+      "name": "Payments EC2 · us-east-1c · 02",
+      "evidence_source": "SyntheticSample:payments-instance-02",
+      "properties": {
+        "instance_id": "i-demo-payments-c-02",
+        "InstanceId": "i-demo-payments-c-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1c",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "payments-us-east-1c-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Payments"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.3.13",
+        "SubnetId": "subnet-demo-private-1c"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-payments-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-payments-target-02",
+      "name": "Payments target · us-east-1c · 02",
+      "evidence_source": "SyntheticSample:payments-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-payments-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-payments-c-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-admin-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-admin-instance-01",
+      "name": "Admin Console EC2 · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:admin-instance-01",
+      "properties": {
+        "instance_id": "i-demo-admin-a-01",
+        "InstanceId": "i-demo-admin-a-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "admin-us-east-1a-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Admin Console"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.17",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-admin-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-admin-target-01",
+      "name": "Admin Console target · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:admin-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-admin-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-admin-a-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-admin-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-admin-instance-02",
+      "name": "Admin Console EC2 · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:admin-instance-02",
+      "properties": {
+        "instance_id": "i-demo-admin-b-02",
+        "InstanceId": "i-demo-admin-b-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "admin-us-east-1b-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Admin Console"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.15",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-admin-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-admin-target-02",
+      "name": "Admin Console target · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:admin-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-admin-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-admin-b-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-support-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-support-instance-01",
+      "name": "Customer Support EC2 · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:support-instance-01",
+      "properties": {
+        "instance_id": "i-demo-support-a-01",
+        "InstanceId": "i-demo-support-a-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1a",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "support-us-east-1a-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Customer Support"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.1.18",
+        "SubnetId": "subnet-demo-private-1a"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-support-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-support-target-01",
+      "name": "Customer Support target · us-east-1a · 01",
+      "evidence_source": "SyntheticSample:support-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-support-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-support-a-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-support-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-support-instance-02",
+      "name": "Customer Support EC2 · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:support-instance-02",
+      "properties": {
+        "instance_id": "i-demo-support-b-02",
+        "InstanceId": "i-demo-support-b-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "support-us-east-1b-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Customer Support"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.16",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-support-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-support-target-02",
+      "name": "Customer Support target · us-east-1b · 02",
+      "evidence_source": "SyntheticSample:support-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-support-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-support-b-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-operations-instance-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-operations-instance-01",
+      "name": "Internal Operations EC2 · us-east-1b · 01",
+      "evidence_source": "SyntheticSample:operations-instance-01",
+      "properties": {
+        "instance_id": "i-demo-operations-b-01",
+        "InstanceId": "i-demo-operations-b-01",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1b",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "operations-us-east-1b-01"
+          },
+          {
+            "Key": "Service",
+            "Value": "Internal Operations"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.2.17",
+        "SubnetId": "subnet-demo-private-1b"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-operations-target-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-operations-target-01",
+      "name": "Internal Operations target · us-east-1b · 01",
+      "evidence_source": "SyntheticSample:operations-target-01",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-operations-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-operations-b-01",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:demo-operations-instance-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "demo-operations-instance-02",
+      "name": "Internal Operations EC2 · us-east-1c · 02",
+      "evidence_source": "SyntheticSample:operations-instance-02",
+      "properties": {
+        "instance_id": "i-demo-operations-c-02",
+        "InstanceId": "i-demo-operations-c-02",
+        "InstanceType": "m7i.medium",
+        "AvailabilityZone": "us-east-1c",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "operations-us-east-1c-02"
+          },
+          {
+            "Key": "Service",
+            "Value": "Internal Operations"
+          }
+        ],
+        "NameStatus": "synthetic",
+        "PrivateIpAddress": "10.42.3.14",
+        "SubnetId": "subnet-demo-private-1c"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:demo-operations-target-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "demo-operations-target-02",
+      "name": "Internal Operations target · us-east-1c · 02",
+      "evidence_source": "SyntheticSample:operations-target-02",
+      "properties": {
+        "target_group_id": "aws:demo:us-east-1:load_balancing.target_group:demo-operations-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-operations-c-02",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    }
+  ]
+}

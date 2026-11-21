@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "atlas-cloud-saas",
+    "description": "Entirely fictional Atlas SaaS infrastructure authored for CloudAtlas portfolio exploration.",
+    "graph_view": "LAMBDA"
+  },
+  "nodes": [
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "name": "Order event Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole",
+          "AWSLambdaSQSQueueExecutionRole",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "name": "Notification Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "name": "Report Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-report-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "name": "File processing Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole",
+          "atlas-upload-bucket-read-policy",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+      "name": "EventBridge Scheduler invoke role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+        "path": "/",
+        "assumed_by": "scheduler.amazonaws.com",
+        "attached_managed_policy_names": [
+          "atlas-scheduled-lambda-invoke-policy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "name": "Order event handler",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "order-event-handler",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 1024,
+        "Timeout": 60,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+        "triggers": [
+          "SQS and EventBridge"
+        ],
+        "environment_variable_names": [
+          "APP_ENV",
+          "LOG_LEVEL"
+        ],
+        "environment_values_included": false,
+        "VpcConfig": {
+          "SubnetIds": [
+            "subnet-demo-private-1a",
+            "subnet-demo-private-1b"
+          ],
+          "SecurityGroupIds": [
+            "sg-demo-lambda-app"
+          ]
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "name": "Notification dispatcher",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "notification-dispatcher",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+        "triggers": [
+          "SNS and EventBridge"
+        ],
+        "environment_variable_names": [
+          "APP_ENV"
+        ],
+        "environment_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "name": "Daily report generator",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "daily-report-generator",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 1024,
+        "Timeout": 120,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-report-execution-role",
+        "triggers": [
+          "EventBridge Scheduler"
+        ],
+        "environment_variable_names": [
+          "APP_ENV"
+        ],
+        "environment_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "name": "Customer file processing worker",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "file-processing-worker",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 2048,
+        "Timeout": 180,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+        "triggers": [
+          "S3"
+        ],
+        "environment_variable_names": [
+          "APP_ENV"
+        ],
+        "environment_values_included": false,
+        "VpcConfig": {
+          "SubnetIds": [
+            "subnet-demo-private-1a",
+            "subnet-demo-private-1b"
+          ],
+          "SecurityGroupIds": [
+            "sg-demo-lambda-app"
+          ]
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:events.event_bus:atlas-production-bus",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "events.event_bus",
+      "native_type": "AWS::Events::EventBus",
+      "native_id": "atlas-production-bus",
+      "name": "Atlas production event bus",
+      "evidence_source": "SyntheticEventBridge:DescribeEventBus",
+      "properties": {
+        "Name": "atlas-production-bus",
+        "event_source": "atlas.application",
+        "state": "ENABLED"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:events.eventbridge_rule:atlas-order-event-routing",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "events.eventbridge_rule",
+      "native_type": "AWS::Events::Rule",
+      "native_id": "atlas-order-event-routing",
+      "name": "Order event routing rule",
+      "evidence_source": "SyntheticEventBridge:ListRules+ListTargetsByRule",
+      "properties": {
+        "Name": "atlas-order-event-routing",
+        "EventBusName": "atlas-production-bus",
+        "State": "ENABLED",
+        "EventPattern": {
+          "source": [
+            "atlas.orders"
+          ],
+          "detail-type": [
+            "OrderAccepted"
+          ]
+        },
+        "target_function": "order-event-handler"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:events.eventbridge_rule:atlas-customer-event-notifications",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "events.eventbridge_rule",
+      "native_type": "AWS::Events::Rule",
+      "native_id": "atlas-customer-event-notifications",
+      "name": "Customer event notification rule",
+      "evidence_source": "SyntheticEventBridge:ListRules+ListTargetsByRule",
+      "properties": {
+        "Name": "atlas-customer-event-notifications",
+        "EventBusName": "atlas-production-bus",
+        "State": "ENABLED",
+        "EventPattern": {
+          "source": [
+            "atlas.customers"
+          ],
+          "detail-type": [
+            "CustomerProfileChanged"
+          ]
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:events.eventbridge_schedule:arn:aws:scheduler:us-east-1:000000000000:schedule/atlas-reporting/daily-revenue-report",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "events.eventbridge_schedule",
+      "native_type": "AWS::Scheduler::Schedule",
+      "native_id": "arn:aws:scheduler:us-east-1:000000000000:schedule/atlas-reporting/daily-revenue-report",
+      "name": "Daily revenue report schedule",
+      "evidence_source": "SyntheticScheduler:GetSchedule",
+      "properties": {
+        "Name": "daily-revenue-report",
+        "GroupName": "atlas-reporting",
+        "State": "ENABLED",
+        "ScheduleExpression": "cron(0 5 * * ? *)",
+        "TargetArn": "arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+        "TargetRoleArn": "arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:messaging.sqs_queue:arn:aws:sqs:us-east-1:000000000000:atlas-order-events",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "messaging.sqs_queue",
+      "native_type": "AWS::SQS::Queue",
+      "native_id": "arn:aws:sqs:us-east-1:000000000000:atlas-order-events",
+      "name": "Order events queue",
+      "evidence_source": "SyntheticSQS:GetQueueAttributes+SyntheticLambda:ListEventSourceMappings",
+      "properties": {
+        "QueueName": "atlas-order-events",
+        "visibility_timeout_seconds": 90,
+        "retention_period_seconds": 345600,
+        "event_source_mapping": {
+          "enabled": true,
+          "batch_size": 10
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:messaging.sqs_queue:arn:aws:sqs:us-east-1:000000000000:atlas-report-requests",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "messaging.sqs_queue",
+      "native_type": "AWS::SQS::Queue",
+      "native_id": "arn:aws:sqs:us-east-1:000000000000:atlas-report-requests",
+      "name": "Report requests queue",
+      "evidence_source": "SyntheticSQS:GetQueueAttributes+SyntheticLambda:ListEventSourceMappings",
+      "properties": {
+        "QueueName": "atlas-report-requests",
+        "visibility_timeout_seconds": 180,
+        "retention_period_seconds": 345600,
+        "event_source_mapping": {
+          "enabled": true,
+          "batch_size": 5
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:messaging.sns_topic:arn:aws:sns:us-east-1:000000000000:atlas-customer-notifications",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "messaging.sns_topic",
+      "native_type": "AWS::SNS::Topic",
+      "native_id": "arn:aws:sns:us-east-1:000000000000:atlas-customer-notifications",
+      "name": "Customer notifications topic",
+      "evidence_source": "SyntheticSNS:ListSubscriptionsByTopic",
+      "properties": {
+        "TopicArn": "arn:aws:sns:us-east-1:000000000000:atlas-customer-notifications",
+        "subscriptions": [
+          {
+            "protocol": "lambda",
+            "endpoint": "arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:messaging.sns_topic:arn:aws:sns:us-east-1:000000000000:atlas-operations-alerts",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "messaging.sns_topic",
+      "native_type": "AWS::SNS::Topic",
+      "native_id": "arn:aws:sns:us-east-1:000000000000:atlas-operations-alerts",
+      "name": "Operations alerts topic",
+      "evidence_source": "SyntheticSNS:ListSubscriptionsByTopic",
+      "properties": {
+        "TopicArn": "arn:aws:sns:us-east-1:000000000000:atlas-operations-alerts",
+        "subscriptions": [
+          {
+            "protocol": "lambda",
+            "endpoint": "arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:storage.s3_bucket:atlas-customer-uploads-demo",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "storage.s3_bucket",
+      "native_type": "AWS::S3::Bucket",
+      "native_id": "atlas-customer-uploads-demo",
+      "name": "Customer uploads bucket",
+      "evidence_source": "SyntheticS3:GetBucketNotificationConfiguration",
+      "properties": {
+        "bucket_name": "atlas-customer-uploads-demo",
+        "region": "us-east-1",
+        "notification_configuration": [
+          {
+            "event": "s3:ObjectCreated:*",
+            "function": "file-processing-worker",
+            "state": "enabled"
+          }
+        ],
+        "public_access_blocked": true
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    }
+  ]
+}

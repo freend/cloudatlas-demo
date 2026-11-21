@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "atlas-cloud-saas",
+    "description": "Entirely fictional Atlas SaaS infrastructure authored for CloudAtlas portfolio exploration.",
+    "graph_view": "IAM"
+  },
+  "edges": [
+    {
+      "id": "synthetic-edge:iam:009",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:010",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:011",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:012",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:013",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-api-queue-consumer-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:014",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:015",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:016",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:017",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:018",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:019",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-upload-bucket-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:020",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-scheduled-lambda-invoke-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:021",
+      "source": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "relation": "USES_CLUSTER_ROLE",
+      "evidence_source": "SyntheticEKS:DescribeCluster",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:022",
+      "source": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "relation": "USES_NODE_ROLE",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:023",
+      "source": "aws:demo:us-east-1:containers.pod_identity_association:atlas-prod-eks/customer/api-workload",
+      "target": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "relation": "ASSOCIATED_WITH_CLUSTER",
+      "evidence_source": "SyntheticEKS:DescribePodIdentityAssociation",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:024",
+      "source": "aws:demo:us-east-1:containers.pod_identity_association:atlas-prod-eks/customer/api-workload",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "relation": "ASSOCIATES_IAM_ROLE",
+      "evidence_source": "SyntheticEKS:DescribePodIdentityAssociation",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:025",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:026",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:027",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:028",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:029",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:030",
+      "source": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedRolePolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:031",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/ava.park",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:032",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/jordan.lee",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:033",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/sam.cho",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:034",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/morgan.kim",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:035",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/casey.wong",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:036",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/taylor.reed",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:037",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/devon.gray",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:038",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/skyler.fox",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:039",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/rory.lane",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:040",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/quinn.park",
+      "target": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+      "relation": "MEMBER_OF_GROUP",
+      "evidence_source": "SyntheticIAM:GetGroup",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "membership_state": "configured"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:041",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-developer-cluster-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:042",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:043",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-frontend-release-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:044",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-developer-cluster-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:045",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:046",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-backend-queue-test-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:047",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-operations-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:048",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:049",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-audit-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:050",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+      "relation": "HAS_ATTACHED_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "group"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:051",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/ava.park",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:052",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/jordan.lee",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:053",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/sam.cho",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:054",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/morgan.kim",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:055",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/casey.wong",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:056",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/taylor.reed",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:057",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/devon.gray",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:058",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/skyler.fox",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:059",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/rory.lane",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:060",
+      "source": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/quinn.park",
+      "target": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "relation": "HAS_DIRECT_POLICY",
+      "evidence_source": "SyntheticIAM:ListAttachedUserPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "attachment_scope": "direct-user"
+      }
+    },
+    {
+      "id": "synthetic-edge:iam:061",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "target": "aws:demo:global:iam.inline_policy:group/atlas-frontend-dev#frontend-release-boundary",
+      "relation": "OWNS_INLINE_POLICY",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:062",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "target": "aws:demo:global:iam.inline_policy:group/atlas-backend-dev#backend-test-queue-scope",
+      "relation": "OWNS_INLINE_POLICY",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:063",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "target": "aws:demo:global:iam.inline_policy:group/atlas-platform-ops#platform-maintenance-guardrail",
+      "relation": "OWNS_INLINE_POLICY",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:iam:064",
+      "source": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+      "target": "aws:demo:global:iam.inline_policy:group/atlas-security-audit#audit-evidence-retention",
+      "relation": "OWNS_INLINE_POLICY",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    }
+  ]
+}

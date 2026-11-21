@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "atlas-cloud-saas",
+    "description": "Entirely fictional Atlas SaaS infrastructure authored for CloudAtlas portfolio exploration.",
+    "graph_view": "LAMBDA"
+  },
+  "edges": [
+    {
+      "id": "synthetic-edge:lambda:001",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Function.Configuration.Role reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:002",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Function.Configuration.Role reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:003",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Function.Configuration.Role reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:004",
+      "source": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "relation": "USES_EXECUTION_ROLE",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Function.Configuration.Role reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:005",
+      "source": "aws:demo:us-east-1:events.event_bus:atlas-production-bus",
+      "target": "aws:demo:us-east-1:events.eventbridge_rule:atlas-order-event-routing",
+      "relation": "OWNS_RULE",
+      "evidence_source": "SyntheticEventBridge:ListRules",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:lambda:006",
+      "source": "aws:demo:us-east-1:events.eventbridge_rule:atlas-order-event-routing",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "relation": "INVOKES_LAMBDA_TARGET",
+      "evidence_source": "SyntheticEventBridge:ListTargetsByRule",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "target_state": "ENABLED"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:007",
+      "source": "aws:demo:us-east-1:events.event_bus:atlas-production-bus",
+      "target": "aws:demo:us-east-1:events.eventbridge_rule:atlas-customer-event-notifications",
+      "relation": "OWNS_RULE",
+      "evidence_source": "SyntheticEventBridge:ListRules",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {}
+    },
+    {
+      "id": "synthetic-edge:lambda:008",
+      "source": "aws:demo:us-east-1:events.eventbridge_rule:atlas-customer-event-notifications",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "relation": "INVOKES_LAMBDA_TARGET",
+      "evidence_source": "SyntheticEventBridge:ListTargetsByRule",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "target_state": "ENABLED"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:009",
+      "source": "aws:demo:us-east-1:events.eventbridge_schedule:arn:aws:scheduler:us-east-1:000000000000:schedule/atlas-reporting/daily-revenue-report",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "relation": "INVOKES_LAMBDA_TARGET",
+      "evidence_source": "SyntheticScheduler:GetSchedule",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "target_state": "ENABLED"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:010",
+      "source": "aws:demo:us-east-1:events.eventbridge_schedule:arn:aws:scheduler:us-east-1:000000000000:schedule/atlas-reporting/daily-revenue-report",
+      "target": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+      "relation": "USES_TARGET_ROLE",
+      "evidence_source": "SyntheticScheduler:GetSchedule",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "relationship_basis": "Schedule.Target.RoleArn reference"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:011",
+      "source": "aws:demo:us-east-1:messaging.sqs_queue:arn:aws:sqs:us-east-1:000000000000:atlas-order-events",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "relation": "TRIGGERS_LAMBDA",
+      "evidence_source": "SyntheticLambda:ListEventSourceMappings",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "mapping_state": "Enabled",
+        "batch_size": 10
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:012",
+      "source": "aws:demo:us-east-1:messaging.sqs_queue:arn:aws:sqs:us-east-1:000000000000:atlas-report-requests",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "relation": "TRIGGERS_LAMBDA",
+      "evidence_source": "SyntheticLambda:ListEventSourceMappings",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "mapping_state": "Enabled",
+        "batch_size": 5
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:013",
+      "source": "aws:demo:us-east-1:messaging.sns_topic:arn:aws:sns:us-east-1:000000000000:atlas-customer-notifications",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "relation": "SUBSCRIBES_LAMBDA",
+      "evidence_source": "SyntheticSNS:ListSubscriptionsByTopic",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "protocol": "lambda",
+        "subscription_status": "Confirmed"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:014",
+      "source": "aws:demo:us-east-1:messaging.sns_topic:arn:aws:sns:us-east-1:000000000000:atlas-operations-alerts",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "relation": "SUBSCRIBES_LAMBDA",
+      "evidence_source": "SyntheticSNS:ListSubscriptionsByTopic",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "protocol": "lambda",
+        "subscription_status": "Confirmed"
+      }
+    },
+    {
+      "id": "synthetic-edge:lambda:015",
+      "source": "aws:demo:us-east-1:storage.s3_bucket:atlas-customer-uploads-demo",
+      "target": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "relation": "NOTIFIES_LAMBDA",
+      "evidence_source": "SyntheticS3:GetBucketNotificationConfiguration",
+      "collected_at": "2026-11-20T00:00:00Z",
+      "properties": {
+        "event": "s3:ObjectCreated:*",
+        "configuration_state": "enabled"
+      }
+    }
+  ]
+}

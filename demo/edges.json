@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-19T00:00:00Z",
+    "status": "synthetic",
+    "errors": [
+
+    ],
+    "source": "synthetic-demo",
+    "scenario": "multi-az-web-api"
+  },
+  "edges": [
+    {
+      "id": "demo-edge:api-alb-listener",
+      "source": "aws:demo:us-east-1:load_balancing.application_load_balancer:api-alb",
+      "target": "aws:demo:us-east-1:load_balancing.listener:api-https-listener",
+      "relation": "HAS_LISTENER",
+      "evidence_source": "SyntheticDemo:api-alb-listener",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:api-listener-rule",
+      "source": "aws:demo:us-east-1:load_balancing.listener:api-https-listener",
+      "target": "aws:demo:us-east-1:load_balancing.listener_rule:api-default-rule",
+      "relation": "HAS_RULE",
+      "evidence_source": "SyntheticDemo:api-listener-rule",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:api-rule-target-group",
+      "source": "aws:demo:us-east-1:load_balancing.listener_rule:api-default-rule",
+      "target": "aws:demo:us-east-1:load_balancing.target_group:api-target-group",
+      "relation": "FORWARDS_TO",
+      "evidence_source": "SyntheticDemo:api-rule-target-group",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "action_type": "forward",
+        "is_default": true
+      }
+    },
+    {
+      "id": "demo-edge:api-server-az-a-calls-orders-db",
+      "source": "aws:demo:us-east-1:compute.instance:api-server-az-a",
+      "target": "aws:demo:us-east-1:database.instance:orders-db",
+      "relation": "APPLICATION_CALLS",
+      "evidence_source": "SyntheticDemo:api-server-az-a-calls-orders-db",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "relationship_kind": "logical-traffic-flow",
+        "source_port": 5432,
+        "protocol": "PostgreSQL",
+        "description": "API tier connects to the private database"
+      }
+    },
+    {
+      "id": "demo-edge:api-server-az-b-calls-orders-db",
+      "source": "aws:demo:us-east-1:compute.instance:api-server-az-b",
+      "target": "aws:demo:us-east-1:database.instance:orders-db",
+      "relation": "APPLICATION_CALLS",
+      "evidence_source": "SyntheticDemo:api-server-az-b-calls-orders-db",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "relationship_kind": "logical-traffic-flow",
+        "source_port": 5432,
+        "protocol": "PostgreSQL",
+        "description": "API tier connects to the private database"
+      }
+    },
+    {
+      "id": "demo-edge:api-target-a-identifies-api-server-az-a",
+      "source": "aws:demo:us-east-1:load_balancing.registered_target:api-target-a",
+      "target": "aws:demo:us-east-1:compute.instance:api-server-az-a",
+      "relation": "IDENTIFIES_INSTANCE",
+      "evidence_source": "SyntheticDemo:api-target-a-identifies-api-server-az-a",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:api-target-b-identifies-api-server-az-b",
+      "source": "aws:demo:us-east-1:load_balancing.registered_target:api-target-b",
+      "target": "aws:demo:us-east-1:compute.instance:api-server-az-b",
+      "relation": "IDENTIFIES_INSTANCE",
+      "evidence_source": "SyntheticDemo:api-target-b-identifies-api-server-az-b",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:api-target-group-targets-api-target-a",
+      "source": "aws:demo:us-east-1:load_balancing.target_group:api-target-group",
+      "target": "aws:demo:us-east-1:load_balancing.registered_target:api-target-a",
+      "relation": "TARGETS",
+      "evidence_source": "SyntheticDemo:api-target-group-targets-api-target-a",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:api-target-group-targets-api-target-b",
+      "source": "aws:demo:us-east-1:load_balancing.target_group:api-target-group",
+      "target": "aws:demo:us-east-1:load_balancing.registered_target:api-target-b",
+      "relation": "TARGETS",
+      "evidence_source": "SyntheticDemo:api-target-group-targets-api-target-b",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:web-alb-listener",
+      "source": "aws:demo:us-east-1:load_balancing.application_load_balancer:web-alb",
+      "target": "aws:demo:us-east-1:load_balancing.listener:web-https-listener",
+      "relation": "HAS_LISTENER",
+      "evidence_source": "SyntheticDemo:web-alb-listener",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:web-listener-rule",
+      "source": "aws:demo:us-east-1:load_balancing.listener:web-https-listener",
+      "target": "aws:demo:us-east-1:load_balancing.listener_rule:web-default-rule",
+      "relation": "HAS_RULE",
+      "evidence_source": "SyntheticDemo:web-listener-rule",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:web-record-points-to-alb",
+      "source": "aws:demo:us-east-1:dns.record:record-www-example-com",
+      "target": "aws:demo:us-east-1:load_balancing.application_load_balancer:web-alb",
+      "relation": "DNS_POINTS_TO",
+      "evidence_source": "SyntheticDemo:web-record-points-to-alb",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "relationship_kind": "configuration"
+      }
+    },
+    {
+      "id": "demo-edge:web-rule-target-group",
+      "source": "aws:demo:us-east-1:load_balancing.listener_rule:web-default-rule",
+      "target": "aws:demo:us-east-1:load_balancing.target_group:web-target-group",
+      "relation": "FORWARDS_TO",
+      "evidence_source": "SyntheticDemo:web-rule-target-group",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "action_type": "forward",
+        "is_default": true
+      }
+    },
+    {
+      "id": "demo-edge:web-server-az-a-calls-api-alb",
+      "source": "aws:demo:us-east-1:compute.instance:web-server-az-a",
+      "target": "aws:demo:us-east-1:load_balancing.application_load_balancer:api-alb",
+      "relation": "APPLICATION_CALLS",
+      "evidence_source": "SyntheticDemo:web-server-az-a-calls-api-alb",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "relationship_kind": "logical-traffic-flow",
+        "source_port": 8080,
+        "target_port": 443,
+        "protocol": "HTTPS",
+        "description": "Web tier calls the private API endpoint"
+      }
+    },
+    {
+      "id": "demo-edge:web-server-az-b-calls-api-alb",
+      "source": "aws:demo:us-east-1:compute.instance:web-server-az-b",
+      "target": "aws:demo:us-east-1:load_balancing.application_load_balancer:api-alb",
+      "relation": "APPLICATION_CALLS",
+      "evidence_source": "SyntheticDemo:web-server-az-b-calls-api-alb",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "relationship_kind": "logical-traffic-flow",
+        "source_port": 8080,
+        "target_port": 443,
+        "protocol": "HTTPS",
+        "description": "Web tier calls the private API endpoint"
+      }
+    },
+    {
+      "id": "demo-edge:web-target-a-identifies-web-server-az-a",
+      "source": "aws:demo:us-east-1:load_balancing.registered_target:web-target-a",
+      "target": "aws:demo:us-east-1:compute.instance:web-server-az-a",
+      "relation": "IDENTIFIES_INSTANCE",
+      "evidence_source": "SyntheticDemo:web-target-a-identifies-web-server-az-a",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:web-target-b-identifies-web-server-az-b",
+      "source": "aws:demo:us-east-1:load_balancing.registered_target:web-target-b",
+      "target": "aws:demo:us-east-1:compute.instance:web-server-az-b",
+      "relation": "IDENTIFIES_INSTANCE",
+      "evidence_source": "SyntheticDemo:web-target-b-identifies-web-server-az-b",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:web-target-group-targets-web-target-a",
+      "source": "aws:demo:us-east-1:load_balancing.target_group:web-target-group",
+      "target": "aws:demo:us-east-1:load_balancing.registered_target:web-target-a",
+      "relation": "TARGETS",
+      "evidence_source": "SyntheticDemo:web-target-group-targets-web-target-a",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:web-target-group-targets-web-target-b",
+      "source": "aws:demo:us-east-1:load_balancing.target_group:web-target-group",
+      "target": "aws:demo:us-east-1:load_balancing.registered_target:web-target-b",
+      "relation": "TARGETS",
+      "evidence_source": "SyntheticDemo:web-target-group-targets-web-target-b",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture"
+      }
+    },
+    {
+      "id": "demo-edge:zone-contains-web-record",
+      "source": "aws:demo:us-east-1:dns.hosted_zone:zone-example-com",
+      "target": "aws:demo:us-east-1:dns.record:record-www-example-com",
+      "relation": "CONTAINS_RECORD",
+      "evidence_source": "SyntheticDemo:zone-contains-web-record",
+      "collected_at": "2026-11-19T00:00:00Z",
+      "properties": {
+        "relationship_scope": "synthetic-demo",
+        "relationship_basis": "authored-demo-architecture",
+        "relationship_kind": "configuration"
+      }
+    }
+  ]
+}

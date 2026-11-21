@@ -1,0 +1,1029 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "atlas-cloud-saas",
+    "description": "Entirely fictional Atlas SaaS infrastructure authored for CloudAtlas portfolio exploration.",
+    "graph_view": "IAM"
+  },
+  "nodes": [
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+      "name": "AmazonEKSClusterPolicy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+        "policy_kind": "AWS managed",
+        "purpose": "Required EKS control plane permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+      "name": "AmazonEKSWorkerNodePolicy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+        "policy_kind": "AWS managed",
+        "purpose": "EKS worker node permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+      "name": "AmazonEC2ContainerRegistryReadOnly",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+        "policy_kind": "AWS managed",
+        "purpose": "Read-only container image access",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+      "name": "AmazonEKS_CNI_Policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+        "policy_kind": "AWS managed",
+        "purpose": "EKS networking plugin permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+      "name": "AWSLambdaBasicExecutionRole",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+        "policy_kind": "AWS managed",
+        "purpose": "Lambda logging permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole",
+      "name": "AWSLambdaSQSQueueExecutionRole",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole",
+        "policy_kind": "AWS managed",
+        "purpose": "Lambda SQS event source permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-api-queue-consumer-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-api-queue-consumer-policy",
+      "name": "atlas-api-queue-consumer-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-api-queue-consumer-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic least-privilege queue receive access",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-upload-bucket-read-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-upload-bucket-read-policy",
+      "name": "atlas-upload-bucket-read-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-upload-bucket-read-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic read access to customer upload objects",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-scheduled-lambda-invoke-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-scheduled-lambda-invoke-policy",
+      "name": "atlas-scheduled-lambda-invoke-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-scheduled-lambda-invoke-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic permission to invoke the report function",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-developer-cluster-read-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-developer-cluster-read-policy",
+      "name": "atlas-developer-cluster-read-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-developer-cluster-read-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic EKS cluster discovery access",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-operations-read-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-operations-read-policy",
+      "name": "atlas-operations-read-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-operations-read-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic infrastructure read access",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-audit-read-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-audit-read-policy",
+      "name": "atlas-audit-read-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-audit-read-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic audit visibility access",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "name": "EKS control plane role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+        "path": "/",
+        "assumed_by": "eks.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AmazonEKSClusterPolicy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "name": "EKS managed node role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-eks-node-role",
+        "path": "/",
+        "assumed_by": "ec2.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AmazonEKSWorkerNodePolicy",
+          "AmazonEC2ContainerRegistryReadOnly",
+          "AmazonEKS_CNI_Policy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "name": "API workload Pod Identity role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-api-pod-role",
+        "path": "/",
+        "assumed_by": "pods.eks.amazonaws.com",
+        "attached_managed_policy_names": [
+          "atlas-api-queue-consumer-policy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+      "name": "Order event Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole",
+          "AWSLambdaSQSQueueExecutionRole",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+      "name": "Notification Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-report-execution-role",
+      "name": "Report Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-report-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+      "name": "File processing Lambda execution role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+        "path": "/",
+        "assumed_by": "lambda.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AWSLambdaBasicExecutionRole",
+          "atlas-upload-bucket-read-policy",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+      "name": "EventBridge Scheduler invoke role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-scheduler-invoke-role",
+        "path": "/",
+        "assumed_by": "scheduler.amazonaws.com",
+        "attached_managed_policy_names": [
+          "atlas-scheduled-lambda-invoke-policy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.eks_cluster",
+      "native_type": "AWS::EKS::Cluster",
+      "native_id": "atlas-prod-eks",
+      "name": "Atlas production Kubernetes cluster",
+      "evidence_source": "SyntheticEKS:DescribeCluster",
+      "properties": {
+        "Version": "1.36",
+        "Status": "ACTIVE",
+        "upgrade_policy": "EXTENDED",
+        "support_status": "STANDARD_SUPPORT",
+        "standard_support_end_date": "2027-08-02",
+        "extended_support_end_date": "2028-08-02",
+        "endpoint_private_access": true,
+        "endpoint_public_access": false,
+        "role_arn": "arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+        "demo_pod_inventory": {
+          "total_pods_in_fictional_cluster": 112,
+          "representative_pods_shown_in_graph": 9,
+          "note": "The graph shows representative Kubernetes workloads rather than every Pod."
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.eks_node_group",
+      "native_type": "AWS::EKS::Nodegroup",
+      "native_id": "atlas-prod-general-workers",
+      "name": "General purpose managed node group",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup",
+      "properties": {
+        "cluster_name": "atlas-prod-eks",
+        "status": "ACTIVE",
+        "capacity_type": "ON_DEMAND",
+        "instance_types": [
+          "m7i.large"
+        ],
+        "scaling_config": {
+          "min_size": 3,
+          "desired_size": 4,
+          "max_size": 8
+        },
+        "subnets": [
+          "subnet-demo-private-1a",
+          "subnet-demo-private-1b"
+        ],
+        "node_role_arn": "arn:aws:iam::000000000000:role/atlas-eks-node-role"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:containers.pod_identity_association:atlas-prod-eks/customer/api-workload",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.pod_identity_association",
+      "native_type": "AWS::EKS::PodIdentityAssociation",
+      "native_id": "atlas-prod-eks/customer/api-workload",
+      "name": "API workload Pod Identity association",
+      "evidence_source": "SyntheticEKS:ListPodIdentityAssociations+DescribePodIdentityAssociation",
+      "properties": {
+        "cluster_name": "atlas-prod-eks",
+        "namespace": "customer",
+        "service_account": "api-workload",
+        "role_arn": "arn:aws:iam::000000000000:role/atlas-api-pod-role",
+        "association_status": "ACTIVE"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:order-event-handler",
+      "name": "Order event handler",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "order-event-handler",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 1024,
+        "Timeout": 60,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-order-event-execution-role",
+        "triggers": [
+          "SQS and EventBridge"
+        ],
+        "environment_variable_names": [
+          "APP_ENV",
+          "LOG_LEVEL"
+        ],
+        "environment_values_included": false,
+        "VpcConfig": {
+          "SubnetIds": [
+            "subnet-demo-private-1a",
+            "subnet-demo-private-1b"
+          ],
+          "SecurityGroupIds": [
+            "sg-demo-lambda-app"
+          ]
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:notification-dispatcher",
+      "name": "Notification dispatcher",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "notification-dispatcher",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-notification-execution-role",
+        "triggers": [
+          "SNS and EventBridge"
+        ],
+        "environment_variable_names": [
+          "APP_ENV"
+        ],
+        "environment_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:daily-report-generator",
+      "name": "Daily report generator",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "daily-report-generator",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 1024,
+        "Timeout": 120,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-report-execution-role",
+        "triggers": [
+          "EventBridge Scheduler"
+        ],
+        "environment_variable_names": [
+          "APP_ENV"
+        ],
+        "environment_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:serverless.lambda_function:arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "serverless.lambda_function",
+      "native_type": "AWS::Lambda::Function",
+      "native_id": "arn:aws:lambda:us-east-1:000000000000:function:file-processing-worker",
+      "name": "Customer file processing worker",
+      "evidence_source": "SyntheticLambda:GetFunctionConfiguration",
+      "properties": {
+        "FunctionName": "file-processing-worker",
+        "Runtime": "python3.13",
+        "State": "Active",
+        "MemorySize": 2048,
+        "Timeout": 180,
+        "execution_role_arn": "arn:aws:iam::000000000000:role/atlas-file-processing-execution-role",
+        "triggers": [
+          "S3"
+        ],
+        "environment_variable_names": [
+          "APP_ENV"
+        ],
+        "environment_values_included": false,
+        "VpcConfig": {
+          "SubnetIds": [
+            "subnet-demo-private-1a",
+            "subnet-demo-private-1b"
+          ],
+          "SecurityGroupIds": [
+            "sg-demo-lambda-app"
+          ]
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+      "name": "AWSLambdaVPCAccessExecutionRole",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        "policy_kind": "AWS managed",
+        "purpose": "Lambda VPC network interface permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/ava.park",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/ava.park",
+      "name": "Ava Park · frontend developer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "ava.park",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/jordan.lee",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/jordan.lee",
+      "name": "Jordan Lee · frontend engineer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "jordan.lee",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/sam.cho",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/sam.cho",
+      "name": "Sam Cho · frontend developer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "sam.cho",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/morgan.kim",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/morgan.kim",
+      "name": "Morgan Kim · backend developer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "morgan.kim",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/casey.wong",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/casey.wong",
+      "name": "Casey Wong · backend engineer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "casey.wong",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/taylor.reed",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/taylor.reed",
+      "name": "Taylor Reed · backend developer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "taylor.reed",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/devon.gray",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/devon.gray",
+      "name": "Devon Gray · platform engineer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "devon.gray",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/skyler.fox",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/skyler.fox",
+      "name": "Skyler Fox · site reliability engineer",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "skyler.fox",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/rory.lane",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/rory.lane",
+      "name": "Rory Lane · security auditor",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "rory.lane",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.user:arn:aws:iam::000000000000:user/quinn.park",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.user",
+      "native_type": "AWS::IAM::User",
+      "native_id": "arn:aws:iam::000000000000:user/quinn.park",
+      "name": "Quinn Park · compliance auditor",
+      "evidence_source": "SyntheticIAM:ListUsers",
+      "properties": {
+        "UserName": "quinn.park",
+        "path": "/people/",
+        "console_access": true,
+        "access_key_values_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.group",
+      "native_type": "AWS::IAM::Group",
+      "native_id": "arn:aws:iam::000000000000:group/atlas-frontend-dev",
+      "name": "Atlas Frontend Developers",
+      "evidence_source": "SyntheticIAM:ListGroups+GetGroup",
+      "properties": {
+        "GroupName": "atlas-frontend-dev",
+        "path": "/teams/"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.group",
+      "native_type": "AWS::IAM::Group",
+      "native_id": "arn:aws:iam::000000000000:group/atlas-backend-dev",
+      "name": "Atlas Backend Developers",
+      "evidence_source": "SyntheticIAM:ListGroups+GetGroup",
+      "properties": {
+        "GroupName": "atlas-backend-dev",
+        "path": "/teams/"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.group",
+      "native_type": "AWS::IAM::Group",
+      "native_id": "arn:aws:iam::000000000000:group/atlas-platform-ops",
+      "name": "Atlas Platform Operations",
+      "evidence_source": "SyntheticIAM:ListGroups+GetGroup",
+      "properties": {
+        "GroupName": "atlas-platform-ops",
+        "path": "/teams/"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.group",
+      "native_type": "AWS::IAM::Group",
+      "native_id": "arn:aws:iam::000000000000:group/atlas-security-audit",
+      "name": "Atlas Security Auditors",
+      "evidence_source": "SyntheticIAM:ListGroups+GetGroup",
+      "properties": {
+        "GroupName": "atlas-security-audit",
+        "path": "/teams/"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+      "name": "atlas-application-observability-read-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-application-observability-read-policy",
+        "PolicyName": "atlas-application-observability-read-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic shared read access to application telemetry",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-frontend-release-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-frontend-release-policy",
+      "name": "atlas-frontend-release-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-frontend-release-policy",
+        "PolicyName": "atlas-frontend-release-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic frontend release workflow permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-backend-queue-test-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-backend-queue-test-policy",
+      "name": "atlas-backend-queue-test-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-backend-queue-test-policy",
+        "PolicyName": "atlas-backend-queue-test-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic backend test queue permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.managed_policy:arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.managed_policy",
+      "native_type": "AWS::IAM::ManagedPolicy",
+      "native_id": "arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+      "name": "atlas-self-service-password-update-policy",
+      "evidence_source": "SyntheticIAM:ListPolicies",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:policy/atlas-self-service-password-update-policy",
+        "PolicyName": "atlas-self-service-password-update-policy",
+        "policy_kind": "customer managed",
+        "purpose": "Synthetic user self-service password update permissions",
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.inline_policy:group/atlas-frontend-dev#frontend-release-boundary",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.inline_policy",
+      "native_type": "IAM::InlinePolicyConfiguration",
+      "native_id": "group/atlas-frontend-dev#frontend-release-boundary",
+      "name": "Frontend release boundary (inline)",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "properties": {
+        "PolicyName": "frontend-release-boundary",
+        "policy_kind": "inline",
+        "owner_type": "iam.group",
+        "owner_node_id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-frontend-dev",
+        "standalone_resource": false,
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.inline_policy:group/atlas-backend-dev#backend-test-queue-scope",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.inline_policy",
+      "native_type": "IAM::InlinePolicyConfiguration",
+      "native_id": "group/atlas-backend-dev#backend-test-queue-scope",
+      "name": "Backend test queue scope (inline)",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "properties": {
+        "PolicyName": "backend-test-queue-scope",
+        "policy_kind": "inline",
+        "owner_type": "iam.group",
+        "owner_node_id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-backend-dev",
+        "standalone_resource": false,
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.inline_policy:group/atlas-platform-ops#platform-maintenance-guardrail",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.inline_policy",
+      "native_type": "IAM::InlinePolicyConfiguration",
+      "native_id": "group/atlas-platform-ops#platform-maintenance-guardrail",
+      "name": "Platform maintenance guardrail (inline)",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "properties": {
+        "PolicyName": "platform-maintenance-guardrail",
+        "policy_kind": "inline",
+        "owner_type": "iam.group",
+        "owner_node_id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-platform-ops",
+        "standalone_resource": false,
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.inline_policy:group/atlas-security-audit#audit-evidence-retention",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.inline_policy",
+      "native_type": "IAM::InlinePolicyConfiguration",
+      "native_id": "group/atlas-security-audit#audit-evidence-retention",
+      "name": "Audit evidence retention (inline)",
+      "evidence_source": "SyntheticIAM:ListGroupPolicies",
+      "properties": {
+        "PolicyName": "audit-evidence-retention",
+        "policy_kind": "inline",
+        "owner_type": "iam.group",
+        "owner_node_id": "aws:demo:global:iam.group:arn:aws:iam::000000000000:group/atlas-security-audit",
+        "standalone_resource": false,
+        "policy_document_included": false
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    }
+  ]
+}

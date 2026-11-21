@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-19T00:00:00Z",
+    "status": "synthetic",
+    "errors": [
+
+    ],
+    "source": "synthetic-demo",
+    "scenario": "multi-az-web-api"
+  },
+  "nodes": [
+    {
+      "id": "aws:demo:us-east-1:compute.instance:api-server-az-a",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "api-server-az-a",
+      "name": "API EC2 · us-east-1a",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "instance_id": "i-demo-api-a",
+        "InstanceId": "i-demo-api-a",
+        "InstanceType": "t3.small",
+        "AvailabilityZone": "us-east-1a",
+        "PrivateIpAddress": "10.42.20.10",
+        "PublicIpAddress": null,
+        "SubnetId": "subnet-api-a",
+        "VpcId": "vpc-demo-atlas",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "api-server-az-a"
+          }
+        ],
+        "NameStatus": "synthetic"
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:api-server-az-b",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "api-server-az-b",
+      "name": "API EC2 · us-east-1b",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "instance_id": "i-demo-api-b",
+        "InstanceId": "i-demo-api-b",
+        "InstanceType": "t3.small",
+        "AvailabilityZone": "us-east-1b",
+        "PrivateIpAddress": "10.42.21.10",
+        "PublicIpAddress": null,
+        "SubnetId": "subnet-api-b",
+        "VpcId": "vpc-demo-atlas",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "api-server-az-b"
+          }
+        ],
+        "NameStatus": "synthetic"
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:web-server-az-a",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "web-server-az-a",
+      "name": "Web EC2 · us-east-1a",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "instance_id": "i-demo-web-a",
+        "InstanceId": "i-demo-web-a",
+        "InstanceType": "t3.small",
+        "AvailabilityZone": "us-east-1a",
+        "PrivateIpAddress": "10.42.10.10",
+        "PublicIpAddress": null,
+        "SubnetId": "subnet-web-a",
+        "VpcId": "vpc-demo-atlas",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "web-server-az-a"
+          }
+        ],
+        "NameStatus": "synthetic"
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:web-server-az-b",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "web-server-az-b",
+      "name": "Web EC2 · us-east-1b",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "instance_id": "i-demo-web-b",
+        "InstanceId": "i-demo-web-b",
+        "InstanceType": "t3.small",
+        "AvailabilityZone": "us-east-1b",
+        "PrivateIpAddress": "10.42.11.10",
+        "PublicIpAddress": null,
+        "SubnetId": "subnet-web-b",
+        "VpcId": "vpc-demo-atlas",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "web-server-az-b"
+          }
+        ],
+        "NameStatus": "synthetic"
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:database.instance:orders-db",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "database.instance",
+      "native_type": "AWS::RDS::DBInstance",
+      "native_id": "orders-db",
+      "name": "Orders PostgreSQL · Multi-AZ",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "DBInstanceIdentifier": "orders-db-demo",
+        "Engine": "postgres",
+        "DBInstanceClass": "db.t4g.micro",
+        "MultiAZ": true,
+        "PubliclyAccessible": false,
+        "AvailabilityZone": "us-east-1a",
+        "DBSubnetGroupName": "orders-db-subnets-demo",
+        "VpcId": "vpc-demo-atlas",
+        "VpcSecurityGroups": [
+          {
+            "VpcSecurityGroupId": "sg-demo-database"
+          }
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:dns.hosted_zone:zone-example-com",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "dns.hosted_zone",
+      "native_type": "AWS::Route53::HostedZone",
+      "native_id": "zone-example-com",
+      "name": "example.com.",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "Id": "ZDEMOEXAMPLE",
+        "Name": "example.com.",
+        "Config": {
+          "PrivateZone": false
+        }
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:dns.record:record-www-example-com",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "dns.record",
+      "native_type": "AWS::Route53::RecordSet",
+      "native_id": "record-www-example-com",
+      "name": "www.example.com.",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "hosted_zone_id": "ZDEMOEXAMPLE",
+        "record": {
+          "Name": "www.example.com.",
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": "public-web-alb.demo.invalid.",
+            "HostedZoneId": "ZDEMOALBZONE",
+            "EvaluateTargetHealth": true
+          }
+        }
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.application_load_balancer:api-alb",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.application_load_balancer",
+      "native_type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "native_id": "api-alb",
+      "name": "Internal API ALB",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "LoadBalancerName": "Internal API ALB",
+        "DNSName": "internal-api-alb.demo.invalid.",
+        "Scheme": "internal",
+        "Type": "application",
+        "State": {
+          "Code": "active"
+        },
+        "AvailabilityZones": [
+          {
+            "ZoneName": "us-east-1a",
+            "SubnetId": "subnet-api-a"
+          },
+          {
+            "ZoneName": "us-east-1b",
+            "SubnetId": "subnet-api-b"
+          }
+        ],
+        "SecurityGroups": [
+          "sg-internal-alb"
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.application_load_balancer:web-alb",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.application_load_balancer",
+      "native_type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "native_id": "web-alb",
+      "name": "Public Web ALB",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "LoadBalancerName": "Public Web ALB",
+        "DNSName": "public-web-alb.demo.invalid.",
+        "Scheme": "internet-facing",
+        "Type": "application",
+        "State": {
+          "Code": "active"
+        },
+        "AvailabilityZones": [
+          {
+            "ZoneName": "us-east-1a",
+            "SubnetId": "subnet-public-a"
+          },
+          {
+            "ZoneName": "us-east-1b",
+            "SubnetId": "subnet-public-b"
+          }
+        ],
+        "SecurityGroups": [
+          "sg-public-alb"
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:api-default-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "api-default-rule",
+      "name": "Default route",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "Priority": "default",
+        "IsDefault": true,
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "api-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener_rule:web-default-rule",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener_rule",
+      "native_type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+      "native_id": "web-default-rule",
+      "name": "Default route",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "Priority": "default",
+        "IsDefault": true,
+        "Actions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "web-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener:api-https-listener",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener",
+      "native_type": "AWS::ElasticLoadBalancingV2::Listener",
+      "native_id": "api-https-listener",
+      "name": "HTTPS · 443",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "Protocol": "HTTPS",
+        "Port": 443,
+        "LoadBalancerId": "api-alb",
+        "DefaultActions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "api-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.listener:web-https-listener",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.listener",
+      "native_type": "AWS::ElasticLoadBalancingV2::Listener",
+      "native_id": "web-https-listener",
+      "name": "HTTPS · 443",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "Protocol": "HTTPS",
+        "Port": 443,
+        "LoadBalancerId": "web-alb",
+        "DefaultActions": [
+          {
+            "Type": "forward",
+            "TargetGroupId": "web-target-group"
+          }
+        ]
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:api-target-a",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "api-target-a",
+      "name": null,
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "target_group_id": "api-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-api-a",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:api-target-b",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "api-target-b",
+      "name": null,
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "target_group_id": "api-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-api-b",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:web-target-a",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "web-target-a",
+      "name": null,
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "target_group_id": "web-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-web-a",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.registered_target:web-target-b",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.registered_target",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetHealthDescription",
+      "native_id": "web-target-b",
+      "name": null,
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "target_group_id": "web-target-group",
+        "target_type": "instance",
+        "target": {
+          "Id": "i-demo-web-b",
+          "Port": 8080
+        },
+        "health": {
+          "State": "healthy",
+          "Description": "Synthetic healthy target"
+        }
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:api-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "api-target-group",
+      "name": "Internal API ALB Target Group",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "TargetGroupName": "api-target-group",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "VpcId": "vpc-demo-atlas",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:load_balancing.target_group:web-target-group",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "load_balancing.target_group",
+      "native_type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "native_id": "web-target-group",
+      "name": "Public Web ALB Target Group",
+      "evidence_source": "SyntheticDemo:MultiAzWebApi",
+      "properties": {
+        "TargetGroupName": "web-target-group",
+        "Protocol": "HTTP",
+        "Port": 8080,
+        "TargetType": "instance",
+        "VpcId": "vpc-demo-atlas",
+        "HealthCheckProtocol": "HTTP",
+        "HealthCheckPort": "traffic-port",
+        "HealthCheckPath": "/health"
+      },
+      "collected_at": "2026-11-19T00:00:00Z"
+    }
+  ]
+}

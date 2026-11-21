@@ -1,0 +1,1120 @@
+{
+  "schema_version": 1,
+  "collection": {
+    "provider": "aws",
+    "account_id": "demo",
+    "region": "us-east-1",
+    "collected_at": "2026-11-20T00:00:00Z",
+    "status": "synthetic",
+    "errors": [],
+    "source": "synthetic-sample",
+    "scenario": "atlas-cloud-saas",
+    "description": "Entirely fictional Atlas SaaS infrastructure authored for CloudAtlas portfolio exploration.",
+    "graph_view": "EKS"
+  },
+  "nodes": [
+    {
+      "id": "aws:demo:us-east-1:containers.eks_cluster:atlas-prod-eks",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.eks_cluster",
+      "native_type": "AWS::EKS::Cluster",
+      "native_id": "atlas-prod-eks",
+      "name": "Atlas production Kubernetes cluster",
+      "evidence_source": "SyntheticEKS:DescribeCluster",
+      "properties": {
+        "Version": "1.36",
+        "Status": "ACTIVE",
+        "upgrade_policy": "EXTENDED",
+        "support_status": "STANDARD_SUPPORT",
+        "standard_support_end_date": "2027-08-02",
+        "extended_support_end_date": "2028-08-02",
+        "endpoint_private_access": true,
+        "endpoint_public_access": false,
+        "role_arn": "arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+        "demo_pod_inventory": {
+          "total_pods_in_fictional_cluster": 112,
+          "representative_pods_shown_in_graph": 9,
+          "note": "The graph shows representative Kubernetes workloads rather than every Pod."
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+      "name": "EKS control plane role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-eks-cluster-role",
+        "path": "/",
+        "assumed_by": "eks.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AmazonEKSClusterPolicy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-eks-node-role",
+      "name": "EKS managed node role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-eks-node-role",
+        "path": "/",
+        "assumed_by": "ec2.amazonaws.com",
+        "attached_managed_policy_names": [
+          "AmazonEKSWorkerNodePolicy",
+          "AmazonEC2ContainerRegistryReadOnly",
+          "AmazonEKS_CNI_Policy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:global:iam.role:arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "global",
+      "resource_type": "iam.role",
+      "native_type": "AWS::IAM::Role",
+      "native_id": "arn:aws:iam::000000000000:role/atlas-api-pod-role",
+      "name": "API workload Pod Identity role",
+      "evidence_source": "SyntheticIAM:RoleConfiguration",
+      "properties": {
+        "Arn": "arn:aws:iam::000000000000:role/atlas-api-pod-role",
+        "path": "/",
+        "assumed_by": "pods.eks.amazonaws.com",
+        "attached_managed_policy_names": [
+          "atlas-api-queue-consumer-policy"
+        ],
+        "data_classification": "synthetic"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:containers.eks_node_group:atlas-prod-general-workers",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.eks_node_group",
+      "native_type": "AWS::EKS::Nodegroup",
+      "native_id": "atlas-prod-general-workers",
+      "name": "General purpose managed node group",
+      "evidence_source": "SyntheticEKS:DescribeNodegroup",
+      "properties": {
+        "cluster_name": "atlas-prod-eks",
+        "status": "ACTIVE",
+        "capacity_type": "ON_DEMAND",
+        "instance_types": [
+          "m7i.large"
+        ],
+        "scaling_config": {
+          "min_size": 3,
+          "desired_size": 4,
+          "max_size": 8
+        },
+        "subnets": [
+          "subnet-demo-private-1a",
+          "subnet-demo-private-1b"
+        ],
+        "node_role_arn": "arn:aws:iam::000000000000:role/atlas-eks-node-role"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1a-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "i-demo-eks-worker-1a-01",
+      "name": "EKS worker · us-east-1a · 01",
+      "evidence_source": "SyntheticEC2:DescribeInstances",
+      "properties": {
+        "InstanceId": "i-demo-eks-worker-1a-01",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1a",
+        "PrivateIpAddress": "10.42.11.21",
+        "SubnetId": "subnet-demo-private-1a",
+        "node_group": "atlas-prod-general-workers",
+        "kubernetes_node_name": "ip-10-42-11-21.ec2.internal",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "eks-worker-us-east-1a-01"
+          },
+          {
+            "Key": "Cluster",
+            "Value": "atlas-prod-eks"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1a-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "i-demo-eks-worker-1a-02",
+      "name": "EKS worker · us-east-1a · 02",
+      "evidence_source": "SyntheticEC2:DescribeInstances",
+      "properties": {
+        "InstanceId": "i-demo-eks-worker-1a-02",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1a",
+        "PrivateIpAddress": "10.42.11.22",
+        "SubnetId": "subnet-demo-private-1a",
+        "node_group": "atlas-prod-general-workers",
+        "kubernetes_node_name": "ip-10-42-11-22.ec2.internal",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "eks-worker-us-east-1a-02"
+          },
+          {
+            "Key": "Cluster",
+            "Value": "atlas-prod-eks"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1b-01",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "i-demo-eks-worker-1b-01",
+      "name": "EKS worker · us-east-1b · 03",
+      "evidence_source": "SyntheticEC2:DescribeInstances",
+      "properties": {
+        "InstanceId": "i-demo-eks-worker-1b-01",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1b",
+        "PrivateIpAddress": "10.42.21.21",
+        "SubnetId": "subnet-demo-private-1b",
+        "node_group": "atlas-prod-general-workers",
+        "kubernetes_node_name": "ip-10-42-21-21.ec2.internal",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "eks-worker-us-east-1b-03"
+          },
+          {
+            "Key": "Cluster",
+            "Value": "atlas-prod-eks"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:compute.instance:i-demo-eks-worker-1b-02",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "compute.instance",
+      "native_type": "AWS::EC2::Instance",
+      "native_id": "i-demo-eks-worker-1b-02",
+      "name": "EKS worker · us-east-1b · 04",
+      "evidence_source": "SyntheticEC2:DescribeInstances",
+      "properties": {
+        "InstanceId": "i-demo-eks-worker-1b-02",
+        "InstanceType": "m7i.large",
+        "AvailabilityZone": "us-east-1b",
+        "PrivateIpAddress": "10.42.21.22",
+        "SubnetId": "subnet-demo-private-1b",
+        "node_group": "atlas-prod-general-workers",
+        "kubernetes_node_name": "ip-10-42-21-22.ec2.internal",
+        "tags": [
+          {
+            "Key": "Name",
+            "Value": "eks-worker-us-east-1b-04"
+          },
+          {
+            "Key": "Cluster",
+            "Value": "atlas-prod-eks"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/customer",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.namespace",
+      "native_type": "Kubernetes::Namespace",
+      "native_id": "atlas-prod-eks/namespace/customer",
+      "name": "customer namespace",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "properties": {
+        "namespace": "customer",
+        "labels": {
+          "team": "web-platform",
+          "environment": "production"
+        },
+        "cluster_name": "atlas-prod-eks"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/platform",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.namespace",
+      "native_type": "Kubernetes::Namespace",
+      "native_id": "atlas-prod-eks/namespace/platform",
+      "name": "platform namespace",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "properties": {
+        "namespace": "platform",
+        "labels": {
+          "team": "platform",
+          "environment": "production"
+        },
+        "cluster_name": "atlas-prod-eks"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/notifications",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.namespace",
+      "native_type": "Kubernetes::Namespace",
+      "native_id": "atlas-prod-eks/namespace/notifications",
+      "name": "notifications namespace",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "properties": {
+        "namespace": "notifications",
+        "labels": {
+          "team": "messaging",
+          "environment": "production"
+        },
+        "cluster_name": "atlas-prod-eks"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.namespace:atlas-prod-eks/namespace/batch",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.namespace",
+      "native_type": "Kubernetes::Namespace",
+      "native_id": "atlas-prod-eks/namespace/batch",
+      "name": "batch namespace",
+      "evidence_source": "SyntheticKubernetesApi:NamespaceList",
+      "properties": {
+        "namespace": "batch",
+        "labels": {
+          "team": "data-operations",
+          "environment": "production",
+          "workload": "async"
+        },
+        "cluster_name": "atlas-prod-eks"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/customer/deployment/web-frontend",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.deployment",
+      "native_type": "Kubernetes::Deployment",
+      "native_id": "atlas-prod-eks/customer/deployment/web-frontend",
+      "name": "Customer web Deployment",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "properties": {
+        "namespace": "customer",
+        "deployment": "web-frontend",
+        "replicas": 2,
+        "selector": {
+          "matchLabels": {
+            "app": "web-frontend"
+          }
+        },
+        "service_account": "web-workload",
+        "labels": {
+          "app": "web-frontend"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/web-frontend-7d5f7c8b9f",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.replica_set",
+      "native_type": "Kubernetes::ReplicaSet",
+      "native_id": "atlas-prod-eks/customer/replicaset/web-frontend-7d5f7c8b9f",
+      "name": "Customer web ReplicaSet",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetList",
+      "properties": {
+        "namespace": "customer",
+        "replica_set": "web-frontend-7d5f7c8b9f",
+        "owner_reference": {
+          "kind": "Deployment",
+          "name": "web-frontend",
+          "controller": true
+        },
+        "desired_replicas": 2,
+        "ready_replicas": 2
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-6f9d4",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/customer/pod/web-frontend-6f9d4",
+      "name": "Customer web Pod · 1",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "customer",
+        "pod_name": "web-frontend-6f9d4",
+        "phase": "Running",
+        "labels": {
+          "app": "web-frontend"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "web-frontend-7d5f7c8b9f",
+          "controller": true
+        },
+        "service_account": "web-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/web-frontend-8b7c2",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/customer/pod/web-frontend-8b7c2",
+      "name": "Customer web Pod · 2",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "customer",
+        "pod_name": "web-frontend-8b7c2",
+        "phase": "Running",
+        "labels": {
+          "app": "web-frontend"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "web-frontend-7d5f7c8b9f",
+          "controller": true
+        },
+        "service_account": "web-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/web-frontend",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.service",
+      "native_type": "Kubernetes::Service",
+      "native_id": "atlas-prod-eks/customer/service/web-frontend",
+      "name": "Customer web Service",
+      "evidence_source": "SyntheticKubernetesApi:ServiceList",
+      "properties": {
+        "namespace": "customer",
+        "service": "web-frontend",
+        "type": "ClusterIP",
+        "selector": {
+          "app": "web-frontend"
+        },
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080,
+            "protocol": "TCP"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/customer/deployment/public-api",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.deployment",
+      "native_type": "Kubernetes::Deployment",
+      "native_id": "atlas-prod-eks/customer/deployment/public-api",
+      "name": "Public API Deployment",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "properties": {
+        "namespace": "customer",
+        "deployment": "public-api",
+        "replicas": 3,
+        "selector": {
+          "matchLabels": {
+            "app": "public-api"
+          }
+        },
+        "service_account": "api-workload",
+        "labels": {
+          "app": "public-api"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/customer/replicaset/public-api-59c7d9f6d7",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.replica_set",
+      "native_type": "Kubernetes::ReplicaSet",
+      "native_id": "atlas-prod-eks/customer/replicaset/public-api-59c7d9f6d7",
+      "name": "Public API ReplicaSet",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetList",
+      "properties": {
+        "namespace": "customer",
+        "replica_set": "public-api-59c7d9f6d7",
+        "owner_reference": {
+          "kind": "Deployment",
+          "name": "public-api",
+          "controller": true
+        },
+        "desired_replicas": 3,
+        "ready_replicas": 3
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-4m2pk",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/customer/pod/public-api-4m2pk",
+      "name": "Public API Pod · 1",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "customer",
+        "pod_name": "public-api-4m2pk",
+        "phase": "Running",
+        "labels": {
+          "app": "public-api"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "public-api-59c7d9f6d7",
+          "controller": true
+        },
+        "service_account": "api-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-7q9fd",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/customer/pod/public-api-7q9fd",
+      "name": "Public API Pod · 2",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "customer",
+        "pod_name": "public-api-7q9fd",
+        "phase": "Running",
+        "labels": {
+          "app": "public-api"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "public-api-59c7d9f6d7",
+          "controller": true
+        },
+        "service_account": "api-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/customer/pod/public-api-9cw4h",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/customer/pod/public-api-9cw4h",
+      "name": "Public API Pod · 3",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "customer",
+        "pod_name": "public-api-9cw4h",
+        "phase": "Running",
+        "labels": {
+          "app": "public-api"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "public-api-59c7d9f6d7",
+          "controller": true
+        },
+        "service_account": "api-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/customer/service/public-api",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.service",
+      "native_type": "Kubernetes::Service",
+      "native_id": "atlas-prod-eks/customer/service/public-api",
+      "name": "Public API Service",
+      "evidence_source": "SyntheticKubernetesApi:ServiceList",
+      "properties": {
+        "namespace": "customer",
+        "service": "public-api",
+        "type": "ClusterIP",
+        "selector": {
+          "app": "public-api"
+        },
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080,
+            "protocol": "TCP"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/notifications/deployment/notification-dispatcher",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.deployment",
+      "native_type": "Kubernetes::Deployment",
+      "native_id": "atlas-prod-eks/notifications/deployment/notification-dispatcher",
+      "name": "Notification dispatcher Deployment",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "properties": {
+        "namespace": "notifications",
+        "deployment": "notification-dispatcher",
+        "replicas": 2,
+        "selector": {
+          "matchLabels": {
+            "app": "notification-dispatcher"
+          }
+        },
+        "service_account": "notify-workload",
+        "labels": {
+          "app": "notification-dispatcher"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/notifications/replicaset/notification-dispatcher-6b8f5d6c8b",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.replica_set",
+      "native_type": "Kubernetes::ReplicaSet",
+      "native_id": "atlas-prod-eks/notifications/replicaset/notification-dispatcher-6b8f5d6c8b",
+      "name": "Notification dispatcher ReplicaSet",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetList",
+      "properties": {
+        "namespace": "notifications",
+        "replica_set": "notification-dispatcher-6b8f5d6c8b",
+        "owner_reference": {
+          "kind": "Deployment",
+          "name": "notification-dispatcher",
+          "controller": true
+        },
+        "desired_replicas": 2,
+        "ready_replicas": 2
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-2p6wr",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/notifications/pod/notification-dispatcher-2p6wr",
+      "name": "Notification dispatcher Pod · 1",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "notifications",
+        "pod_name": "notification-dispatcher-2p6wr",
+        "phase": "Running",
+        "labels": {
+          "app": "notification-dispatcher"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "notification-dispatcher-6b8f5d6c8b",
+          "controller": true
+        },
+        "service_account": "notify-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/notifications/pod/notification-dispatcher-5bx8m",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/notifications/pod/notification-dispatcher-5bx8m",
+      "name": "Notification dispatcher Pod · 2",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "notifications",
+        "pod_name": "notification-dispatcher-5bx8m",
+        "phase": "Running",
+        "labels": {
+          "app": "notification-dispatcher"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "notification-dispatcher-6b8f5d6c8b",
+          "controller": true
+        },
+        "service_account": "notify-workload"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/notifications/service/notification-dispatcher",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.service",
+      "native_type": "Kubernetes::Service",
+      "native_id": "atlas-prod-eks/notifications/service/notification-dispatcher",
+      "name": "Notification dispatcher Service",
+      "evidence_source": "SyntheticKubernetesApi:ServiceList",
+      "properties": {
+        "namespace": "notifications",
+        "service": "notification-dispatcher",
+        "type": "ClusterIP",
+        "selector": {
+          "app": "notification-dispatcher"
+        },
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080,
+            "protocol": "TCP"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.deployment:atlas-prod-eks/batch/deployment/order-batch-worker",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.deployment",
+      "native_type": "Kubernetes::Deployment",
+      "native_id": "atlas-prod-eks/batch/deployment/order-batch-worker",
+      "name": "Order batch worker Deployment",
+      "evidence_source": "SyntheticKubernetesApi:DeploymentList",
+      "properties": {
+        "namespace": "batch",
+        "deployment": "order-batch-worker",
+        "replicas": 2,
+        "selector": {
+          "matchLabels": {
+            "app": "order-batch-worker",
+            "workload": "async"
+          }
+        },
+        "service_account": "batch-workload",
+        "labels": {
+          "app": "order-batch-worker",
+          "workload": "async"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.replica_set:atlas-prod-eks/batch/replicaset/order-batch-worker-6f67b78f7c",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.replica_set",
+      "native_type": "Kubernetes::ReplicaSet",
+      "native_id": "atlas-prod-eks/batch/replicaset/order-batch-worker-6f67b78f7c",
+      "name": "Order batch worker ReplicaSet",
+      "evidence_source": "SyntheticKubernetesApi:ReplicaSetList",
+      "properties": {
+        "namespace": "batch",
+        "replica_set": "order-batch-worker-6f67b78f7c",
+        "owner_reference": {
+          "kind": "Deployment",
+          "name": "order-batch-worker",
+          "controller": true
+        },
+        "desired_replicas": 2,
+        "ready_replicas": 2
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-4qf5n",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/batch/pod/order-batch-worker-4qf5n",
+      "name": "Order batch worker Pod · 1",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "batch",
+        "pod_name": "order-batch-worker-4qf5n",
+        "phase": "Running",
+        "labels": {
+          "app": "order-batch-worker",
+          "workload": "async"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "order-batch-worker-6f67b78f7c",
+          "controller": true
+        },
+        "service_account": "batch-workload",
+        "fargate_profile": "atlas-prod-batch-fargate"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.pod:atlas-prod-eks/batch/pod/order-batch-worker-9lp2d",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.pod",
+      "native_type": "Kubernetes::Pod",
+      "native_id": "atlas-prod-eks/batch/pod/order-batch-worker-9lp2d",
+      "name": "Order batch worker Pod · 2",
+      "evidence_source": "SyntheticKubernetesApi:PodList",
+      "properties": {
+        "namespace": "batch",
+        "pod_name": "order-batch-worker-9lp2d",
+        "phase": "Running",
+        "labels": {
+          "app": "order-batch-worker",
+          "workload": "async"
+        },
+        "owner_reference": {
+          "kind": "ReplicaSet",
+          "name": "order-batch-worker-6f67b78f7c",
+          "controller": true
+        },
+        "service_account": "batch-workload",
+        "fargate_profile": "atlas-prod-batch-fargate"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.service:atlas-prod-eks/batch/service/order-batch-worker",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.service",
+      "native_type": "Kubernetes::Service",
+      "native_id": "atlas-prod-eks/batch/service/order-batch-worker",
+      "name": "Order batch worker Service",
+      "evidence_source": "SyntheticKubernetesApi:ServiceList",
+      "properties": {
+        "namespace": "batch",
+        "service": "order-batch-worker",
+        "type": "ClusterIP",
+        "selector": {
+          "app": "order-batch-worker",
+          "workload": "async"
+        },
+        "ports": [
+          {
+            "port": 8080,
+            "targetPort": 8080,
+            "protocol": "TCP"
+          }
+        ]
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.ingress:atlas-prod-eks/customer/ingress/customer-web",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.ingress",
+      "native_type": "Kubernetes::Ingress",
+      "native_id": "atlas-prod-eks/customer/ingress/customer-web",
+      "name": "Customer web ingress",
+      "evidence_source": "SyntheticKubernetesApi:IngressList",
+      "properties": {
+        "namespace": "customer",
+        "ingress_class": "alb",
+        "host_rules": [
+          {
+            "host": "www.example.com",
+            "service": "web-frontend"
+          }
+        ],
+        "tls": true
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.ingress:atlas-prod-eks/customer/ingress/public-api",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.ingress",
+      "native_type": "Kubernetes::Ingress",
+      "native_id": "atlas-prod-eks/customer/ingress/public-api",
+      "name": "Public API ingress",
+      "evidence_source": "SyntheticKubernetesApi:IngressList",
+      "properties": {
+        "namespace": "customer",
+        "ingress_class": "alb",
+        "host_rules": [
+          {
+            "host": "api.example.com",
+            "service": "public-api"
+          }
+        ],
+        "tls": true
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:containers.fargate_profile:atlas-prod-batch-fargate",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.fargate_profile",
+      "native_type": "AWS::EKS::FargateProfile",
+      "native_id": "atlas-prod-batch-fargate",
+      "name": "Batch Fargate profile",
+      "evidence_source": "SyntheticEKS:DescribeFargateProfile",
+      "properties": {
+        "cluster_name": "atlas-prod-eks",
+        "status": "ACTIVE",
+        "selectors": [
+          {
+            "namespace": "batch",
+            "labels": {
+              "workload": "async"
+            }
+          }
+        ],
+        "subnets": [
+          "subnet-demo-private-1a",
+          "subnet-demo-private-1b"
+        ],
+        "matching_behavior": "Fictional namespace and Pod labels satisfy this profile selector."
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:containers.pod_identity_association:atlas-prod-eks/customer/api-workload",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "containers.pod_identity_association",
+      "native_type": "AWS::EKS::PodIdentityAssociation",
+      "native_id": "atlas-prod-eks/customer/api-workload",
+      "name": "API workload Pod Identity association",
+      "evidence_source": "SyntheticEKS:ListPodIdentityAssociations+DescribePodIdentityAssociation",
+      "properties": {
+        "cluster_name": "atlas-prod-eks",
+        "namespace": "customer",
+        "service_account": "api-workload",
+        "role_arn": "arn:aws:iam::000000000000:role/atlas-api-pod-role",
+        "association_status": "ACTIVE"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-21.ec2.internal",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.node",
+      "native_type": "Kubernetes::Node",
+      "native_id": "atlas-prod-eks/node/ip-10-42-11-21.ec2.internal",
+      "name": "Kubernetes node · us-east-1a · 01",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "properties": {
+        "node_name": "ip-10-42-11-21.ec2.internal",
+        "ProviderID": "aws:///us-east-1a/i-demo-eks-worker-1a-01",
+        "capacity_type": "ec2",
+        "status": "Ready",
+        "labels": {
+          "eks.amazonaws.com/nodegroup": "atlas-prod-general-workers",
+          "topology.kubernetes.io/zone": "us-east-1a"
+        },
+        "instance_id": "i-demo-eks-worker-1a-01"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-11-22.ec2.internal",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.node",
+      "native_type": "Kubernetes::Node",
+      "native_id": "atlas-prod-eks/node/ip-10-42-11-22.ec2.internal",
+      "name": "Kubernetes node · us-east-1a · 02",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "properties": {
+        "node_name": "ip-10-42-11-22.ec2.internal",
+        "ProviderID": "aws:///us-east-1a/i-demo-eks-worker-1a-02",
+        "capacity_type": "ec2",
+        "status": "Ready",
+        "labels": {
+          "eks.amazonaws.com/nodegroup": "atlas-prod-general-workers",
+          "topology.kubernetes.io/zone": "us-east-1a"
+        },
+        "instance_id": "i-demo-eks-worker-1a-02"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-21.ec2.internal",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.node",
+      "native_type": "Kubernetes::Node",
+      "native_id": "atlas-prod-eks/node/ip-10-42-21-21.ec2.internal",
+      "name": "Kubernetes node · us-east-1b · 03",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "properties": {
+        "node_name": "ip-10-42-21-21.ec2.internal",
+        "ProviderID": "aws:///us-east-1b/i-demo-eks-worker-1b-01",
+        "capacity_type": "ec2",
+        "status": "Ready",
+        "labels": {
+          "eks.amazonaws.com/nodegroup": "atlas-prod-general-workers",
+          "topology.kubernetes.io/zone": "us-east-1b"
+        },
+        "instance_id": "i-demo-eks-worker-1b-01"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/ip-10-42-21-22.ec2.internal",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.node",
+      "native_type": "Kubernetes::Node",
+      "native_id": "atlas-prod-eks/node/ip-10-42-21-22.ec2.internal",
+      "name": "Kubernetes node · us-east-1b · 04",
+      "evidence_source": "SyntheticKubernetesApi:NodeList",
+      "properties": {
+        "node_name": "ip-10-42-21-22.ec2.internal",
+        "ProviderID": "aws:///us-east-1b/i-demo-eks-worker-1b-02",
+        "capacity_type": "ec2",
+        "status": "Ready",
+        "labels": {
+          "eks.amazonaws.com/nodegroup": "atlas-prod-general-workers",
+          "topology.kubernetes.io/zone": "us-east-1b"
+        },
+        "instance_id": "i-demo-eks-worker-1b-02"
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/fargate-ip-10-42-31-45.ec2.internal",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.node",
+      "native_type": "Kubernetes::Node",
+      "native_id": "atlas-prod-eks/node/fargate-ip-10-42-31-45.ec2.internal",
+      "name": "Fargate node · batch · 01",
+      "evidence_source": "SyntheticKubernetesApi:NodeList+SyntheticEKS:DescribeFargateProfile",
+      "properties": {
+        "node_name": "fargate-ip-10-42-31-45.ec2.internal",
+        "capacity_type": "fargate",
+        "status": "Ready",
+        "fargate_profile": "atlas-prod-batch-fargate",
+        "labels": {
+          "eks.amazonaws.com/compute-type": "fargate",
+          "topology.kubernetes.io/zone": "us-east-1a"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    },
+    {
+      "id": "aws:demo:us-east-1:kubernetes.node:atlas-prod-eks/node/fargate-ip-10-42-32-46.ec2.internal",
+      "provider": "aws",
+      "account_id": "demo",
+      "region": "us-east-1",
+      "resource_type": "kubernetes.node",
+      "native_type": "Kubernetes::Node",
+      "native_id": "atlas-prod-eks/node/fargate-ip-10-42-32-46.ec2.internal",
+      "name": "Fargate node · batch · 02",
+      "evidence_source": "SyntheticKubernetesApi:NodeList+SyntheticEKS:DescribeFargateProfile",
+      "properties": {
+        "node_name": "fargate-ip-10-42-32-46.ec2.internal",
+        "capacity_type": "fargate",
+        "status": "Ready",
+        "fargate_profile": "atlas-prod-batch-fargate",
+        "labels": {
+          "eks.amazonaws.com/compute-type": "fargate",
+          "topology.kubernetes.io/zone": "us-east-1b"
+        }
+      },
+      "collected_at": "2026-11-20T00:00:00Z"
+    }
+  ]
+}
